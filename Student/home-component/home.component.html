@@ -1,0 +1,22 @@
+<div *rxContext="let user on _user">
+  <div *ngIf="user" class="jumbotron">
+    <h1 class="display-3">Hello, {{ user.first_name }}</h1>
+    <p class="lead">What would you like to do?</p>
+    <hr class="my-4">
+    <div class="btn-group" role="group">
+      <button class="btn btn-primary" [routerLink]="['/units']">See Units</button>
+      <button class="btn btn-primary" (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div *ngIf="!user" class="jumbotron">
+    <h1 class="display-3">Hello, stranger</h1>
+    <p class="lead">Are you new here? Would you like to: </p>
+    <hr class="my-4">
+    <div class="btn-group" role="group">
+      <button class="btn btn-primary" [routerLink]="['/login']">Login</button>
+      <button class="btn btn-primary">Register</button>
+    </div>
+  </div>
+</div>
+
