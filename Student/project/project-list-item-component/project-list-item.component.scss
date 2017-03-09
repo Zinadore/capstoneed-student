@@ -1,0 +1,43 @@
+:host {
+  .card-header {
+    &:hover {
+      cursor: pointer;
+      cursor: hand;
+    }
+    a {
+      color: inherit;
+    }
+  }
+
+  .block-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    .completed {
+      margin-right: 3px;
+    }
+    .completed, .iterations {
+      background-color: #EEEEEE;
+      text-align: center;
+      padding: 15px;
+
+      span {
+        display: block;
+        font-size: 2em;
+      }
+    }
+  }
+
+  .summary {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    .description {
+      margin-left: 5px;
+    }
+  }
+
+}

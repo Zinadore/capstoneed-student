@@ -1,0 +1,31 @@
+<div *rxContext="let user on user">
+  <template [ngTemplateOutlet]="validUser" [ngOutletContext]="{ user: user }" *ngIf="user"></template>
+  <template [ngTemplateOutlet]="invalidUser" *ngIf="!user"></template>
+</div>
+
+
+<template #validUser let-user="user">
+  <img class="img-fluid mx-auto d-block" [src]="user.avatar_url" />
+  <div class="username">
+    {{ user.first_name + ' ' + user.last_name}}
+  </div>
+
+  <h4>My Teams</h4>
+  <div class="projects-wrapper" *rxContext="let list on projects">
+    <span *ngFor="let project of list"><a [routerLink]="['/projects', project.id]">{{ project.team_name}}</a></span>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="btn-group-vertical action-buttons">
+    <button class="btn btn-default">My Profile</button>
+    <button class="btn btn-default" (click)="onLogout()">Log Out</button>
+  </div>
+</template>
+
+<template #invalidUser>
+  <div class="btn-group-vertical">
+    <button class="btn btn-default" [routerLink]="['/login']">Login</button>
+    <button class="btn btn-default" >Register</button>
+  </div>
+</template>

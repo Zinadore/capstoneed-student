@@ -1,0 +1,16 @@
+<h3 class="card-header">Pending Peer Assessments</h3>
+<div *rxContext="let list on assessments" class="card-block">
+  <div class="list-group list-group-flush">
+    <ced-pa-feed-item class="list-group-item"
+                      *ngFor="let assessment of list"
+                      [assessment]="assessment"
+                      [project]="getProject(assessment.project_id) | async"
+    ></ced-pa-feed-item>
+
+    <ced-pa-feed-item class="list-group-item"
+                      *ngFor="let assessment of list"
+                      [assessment]="assessment"
+                      [project]="getProject(assessment.project_id) | async"
+    ></ced-pa-feed-item>
+  </div>
+</div>

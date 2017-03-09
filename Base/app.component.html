@@ -2,7 +2,7 @@
 
 <div id="wrapper">
   <div id="left-sidebar-wrapper" [class.open]="_leftOpen">
-    <div id="sidebar-header">
+    <div class="sidebar-header">
       <a [routerLink]="['/home']">CapstoneED</a>
     </div>
     <ced-sidenav></ced-sidenav>
@@ -10,11 +10,14 @@
   <div id="page-content-wrapper">
     <ced-header (burgerClicked)="toggleLeft()" (profileClicked)="toggleRight()"></ced-header>
     <div class="container-fluid">
+      <span>You are here:</span>
+      <breadcrumb></breadcrumb>
       <router-outlet></router-outlet>
     </div>
   </div>
   <div id="right-sidebar-wrapper" [class.open]="_rightOpen">
-
-    Hi, i am on the right
+    <div class="sidebar-header">
+    </div>
+    <ced-profile-sidebar></ced-profile-sidebar>
   </div>
 </div>

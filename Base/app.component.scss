@@ -1,6 +1,19 @@
 @import "../../style/global-variables";
+:host /deep/ .breadcrumb {
+  background-color: white;
+  .breadcrumb-item {
+    color: #0275d8;
+
+    &.active {
+      color: #636c72;
+    }
+  }
+}
+
+
 #wrapper {
   display: flex;
+  height: 100%;
 
   #left-sidebar-wrapper {
     width: 250px;
@@ -13,7 +26,7 @@
       opacity: 1;
     }
 
-    #sidebar-header {
+    .sidebar-header {
       font-size: 18px;
       height: $navbar-height;
       background-color: white;
@@ -48,12 +61,25 @@
     width: 250px;
     max-width: 0;
     opacity: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 
     transition: max-width 0.3s, opacity 0.15s,  ease-in-out;
     &.open {
       max-width: 100%;
       opacity: 1;
+    }
+
+    .sidebar-header {
+      font-size: 18px;
+      height: $navbar-height;
+      background-color: white;
+      border-bottom: 1px solid #e6e6e6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 25px;
     }
   }
 }

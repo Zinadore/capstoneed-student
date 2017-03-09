@@ -1,0 +1,9 @@
+<div *rxContext="let pa on assessment">
+
+    <ced-form-wizard *ngIf="pa">
+      <ced-form-wizard-step *ngFor="let question of pa.questions; let i = index">
+        <ced-pa-question [question]="question" [index]="i" [project]="project | async"></ced-pa-question>
+      </ced-form-wizard-step>
+    </ced-form-wizard>
+
+</div>

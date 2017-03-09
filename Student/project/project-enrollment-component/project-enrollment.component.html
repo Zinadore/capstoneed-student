@@ -1,0 +1,10 @@
+<form (ngSubmit)="onEnroll()" class="form-inline" [formGroup]="enrollForm">
+  <label for="key" class="form-control-label">Enrollment key:</label>
+  <input id="key" formControlName="key" type="text" class="form-control">
+  <label for="nickname" class="form-control-label">Desired nickname:</label>
+  <input id="nickname" class="form-control" type="text" formControlName="nickname">
+  <label for="id" class="form-control-label">Project id:</label>
+  <input id="id" class="form-control" type="text" formControlName="id">
+
+  <button [disabled]="!enrollForm.valid" class="btn btn-success">Enroll</button>
+</form>

@@ -1,0 +1,26 @@
+<div class="feed-item">
+  <div class="project-logo">
+    <img class="img-fluid" [src]="_form_project?.logo" alt="{{_form_project?.project_name + 'logo'}}">
+  </div>
+
+  <div class="project-info">
+    {{ _form_project?.project_name}}
+  </div>
+
+  <div class="team-badge">
+  <span class="badge badge-default" [style.background]="_form_project?.color">
+    {{ _form_project?.team_name }}
+  </span>
+  </div>
+
+  <div class="time-remaining">
+    {{ time_remaining }}
+  </div>
+
+  <div class="view-button">
+    <button class="btn btn-primary" [routerLink]="['/peer-assessments', _pa_form.id]">View</button>
+  </div>
+</div>
+
+
+

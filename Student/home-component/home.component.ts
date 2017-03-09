@@ -5,6 +5,8 @@ import { IAppState } from '../../../shared/Store/Reducers/index';
 import { User } from '../../../shared/Store/Models/user';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '../../../shared/Services/authentication.service';
+import { PeerAssessmentForm } from '../../../shared/Store/Models/peer-assessment-form';
+import { PeerAssessmentService } from '../../../shared/Services/peer-assessment.service';
 @Component({
   selector: 'ced-home',
   templateUrl: 'home.component.html',
@@ -13,7 +15,7 @@ import { AuthenticationService } from '../../../shared/Services/authentication.s
 export class HomeComponent extends ComponentBase {
   private _user: Observable<User>;
 
-  constructor(store: Store<IAppState>, private authService: AuthenticationService) {
+  constructor(store: Store<IAppState>, private authService: AuthenticationService, private assessmentService: PeerAssessmentService) {
     super();
     this._user = store.select('user');
   }
@@ -22,5 +24,8 @@ export class HomeComponent extends ComponentBase {
     this.authService.logout();
   }
 
+  getAssessments(): void {
+    this.assessmentService.getAllActive();
+  }
 
 }

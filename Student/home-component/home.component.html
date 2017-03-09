@@ -1,12 +1,6 @@
 <div *rxContext="let user on _user">
-  <div *ngIf="user" class="jumbotron">
-    <h1 class="display-3">Hello, {{ user.first_name }}</h1>
-    <p class="lead">What would you like to do?</p>
-    <hr class="my-4">
-    <div class="btn-group" role="group">
-      <button class="btn btn-primary" [routerLink]="['/units']">See Units</button>
-      <button class="btn btn-primary" (click)="logout()">Logout</button>
-    </div>
+  <div *ngIf="user">
+    <ced-pa-feed></ced-pa-feed>
   </div>
 
   <div *ngIf="!user" class="jumbotron">

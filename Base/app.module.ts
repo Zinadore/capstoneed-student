@@ -1,4 +1,5 @@
 import { NgModule, ApplicationRef } from '@angular/core';
+import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
 import { createNewHosts, removeNgStyles } from '@angularclass/hmr';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,7 +30,7 @@ const ToastrGlobalConf: ToastrConfig = {
   preventDuplicates: false, // block duplicate messages
   // toastComponent = Toast, // the angular 2 component that will be used
   closeButton: true, // show close button
-  timeOut: 5000, // time to live
+  timeOut: 1500, // time to live
   enableHtml: false, // allow html in message. (UNSAFE)
   extendedTimeOut: 10000, // time to close after a user hovers over toast
   progressBar: true, // show progress bar
@@ -50,6 +51,7 @@ const ToastrGlobalConf: ToastrConfig = {
     NgbModule.forRoot(),
     ToastrModule.forRoot(ToastrGlobalConf),
     ToastContainerModule.forRoot(),
+    Ng2BreadcrumbModule.forRoot(),
     CedStoreModule.provideStore(),
     ServicesModule.forRoot(),
     SharedDirectivesModule,
