@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentBase } from '../../../../shared/Directives/componentBase';
 import { Project } from '../../../../shared/Store/Models/project';
 import { Assignment } from '../../../../shared/Store/Models/assignment';
@@ -9,6 +9,7 @@ import { Iteration } from '../../../../shared/Store/Models/iteration';
   selector: 'ced-project-list-item',
   templateUrl: 'project-list-item.component.html',
   styleUrls: ['project-list-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'card'
   }
@@ -28,9 +29,9 @@ export class ProjectListItemComponent extends ComponentBase implements OnChanges
   }
 
   ngOnChanges() {
-    let end: any = moment(this.assignment.end_date, 'YYYY-MM-DD').toDate();
-    let start: any = moment(this.assignment.start_date, 'YYYY-MM-DD').toDate();
-    this.percentage_completed = Math.round((this.now - start) / (end -start) * 1000);
+      let end: any = moment(this.assignment.end_date, 'YYYY-MM-DD').toDate();
+      let start: any = moment(this.assignment.start_date, 'YYYY-MM-DD').toDate();
+      this.percentage_completed = Math.round((this.now - start) / (end - start) * 1000);
   }
 
   getIterationsCompleted(): string {
@@ -45,7 +46,9 @@ export class ProjectListItemComponent extends ComponentBase implements OnChanges
   }
 
   private isIterationCompleted(iteration: Iteration): boolean {
-    return iteration.deadline <= this.now;
+    if(!iteration)
+      return false;
+    return new Date(iteration.deadline) <= this.now;
   }
 
   iteration_progress(iteration: Iteration): number {
