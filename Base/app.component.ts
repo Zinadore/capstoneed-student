@@ -1,13 +1,8 @@
 import '../../style/app.scss';
-
 import { Component, OnInit } from '@angular/core';
-import { CustomHttp } from '../../shared/Services/customHttp';
 import { AuthenticationService } from '../../shared/Services/authentication.service';
-import { UserType, User } from '../../shared/Store/Models/user';
-import { Observable } from 'rxjs';
-import { IAppState } from '../../shared/Store/Reducers/index';
-import { Store } from '@ngrx/store';
-import { isNullOrUndefined } from 'util';
+import { UserType } from '../../shared/Store/Models/user';
+import { BreadcrumbService } from 'ng2-breadcrumb/ng2-breadcrumb';
 
 @Component({
   selector: 'ced-app',
@@ -18,7 +13,7 @@ export class AppComponent implements OnInit {
   private _rightOpen: boolean;
   private _leftOpen: boolean;
 
-  constructor(private authService: AuthenticationService, store: Store<IAppState>) {
+  constructor(private authService: AuthenticationService, private breadcrumbService: BreadcrumbService) {
     this._rightOpen = this._leftOpen = false;
   }
 

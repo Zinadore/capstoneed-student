@@ -1,0 +1,36 @@
+:host {
+
+  &>.container>.card:not(:first-child) {
+    margin-top: 1.5em;
+  }
+  #project-details {
+    .card-block {
+      display: none;
+
+      &.show {
+        display: flex;
+      }
+    }
+
+    .description {
+      flex: 1
+    }
+  }
+
+  #the-team {
+    .member-card {
+      width: 15rem;
+    }
+
+    .nickname {
+      text-align: center;
+      color: #5a7391;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .full-name {
+      text-align: center;
+    }
+  }
+}

@@ -6,8 +6,21 @@
     flex: 1;
   }
 
+  .user-image {
+    padding: 0 10px;
+  }
+
   .username {
+    margin-top: 7px;
     text-align: center;
+    color: #5a7391;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 7px;
+  }
+
+  .teams-card {
+    margin-top: 1em
   }
 
   &>div {

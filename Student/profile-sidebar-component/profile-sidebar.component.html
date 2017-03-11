@@ -5,15 +5,22 @@
 
 
 <template #validUser let-user="user">
-  <img class="img-fluid mx-auto d-block" [src]="user.avatar_url" />
+  <img class="img-fluid mx-auto d-block user-image" [src]="user.avatar_url" />
   <div class="username">
     {{ user.first_name + ' ' + user.last_name}}
   </div>
 
-  <h4>My Teams</h4>
-  <div class="projects-wrapper" *rxContext="let list on projects">
-    <span *ngFor="let project of list"><a [routerLink]="['/projects', project.id]">{{ project.team_name}}</a></span>
+  <div class="card teams-card">
+    <div class="card-header"><h6>My Active Teams</h6></div>
+    <ul class="list-group" *rxContext="let list on projects">
+      <li *ngFor="let project of list" class="list-group-item">
+        <a [routerLink]="['/projects', project.id]">
+          <span class="badge text-truncate" [style.background-color]="project.color">{{ project.team_name }}</span>
+        </a>
+      </li>
+    </ul>
   </div>
+
 
   <div class="spacer"></div>
 
