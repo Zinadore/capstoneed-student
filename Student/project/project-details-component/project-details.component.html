@@ -1,3 +1,56 @@
-<p>
-  {{project?.project_name}}
-</p>
+<template [ngTemplateOutlet]="validProject" *ngIf="project"></template>
+<template [ngTemplateOutlet]="invalidProject" *ngIf="!project"></template>
+
+
+
+<template #validProject>
+  <div class="container">
+    <div class="card" id="project-details">
+      <div class="card-header d-flex" (click)="toggleDescription()">
+        <h4>{{ project.project_name }}</h4>
+        <i role="button" class="fa ml-auto align-self-center" [ngClass]="{ 'fa-chevron-down': isDescriptionClosed, 'fa-chevron-up': !isDescriptionClosed }"></i>
+      </div>
+      <div class="card-block" [ngbCollapse]="isDescriptionClosed">
+        <div class="description">
+          {{ project.description }}
+        </div>
+        <div class="dates">
+          <dl class="row">
+            <dt class="col-6">Start Date <i class="fa fa-hourglass-start" aria-hidden="true"></i></dt>
+            <dd class="col-6">{{ project.assignment.start_date | date: 'dd/MM/yyyy' }}</dd>
+            <dt class="col-6">End Date <i class="fa fa-hourglass-end" aria-hidden="true"></i></dt>
+            <dd class="col-6">{{ project.assignment.end_date | date: 'dd/MM/yyyy' }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4 class="card-header">Gamification</h4>
+      <div class="card-block">
+        <p>
+          Insert coin here ->  |
+        </p>
+      </div>
+    </div>
+
+    <div class="card" id="the-team">
+      <h3 class="card-header">The team</h3>
+      <div class="card-block d-flex justify-content-between flex-wrap">
+        <div class="card member-card" *ngFor="let student of project.students">
+          <img [src]="student.avatar_url" alt="" class="card-img-top">
+          <div class="card-block">
+            <p class="card-text nickname">{{student.nickname}}</p>
+            <p class="card-text full-name">{{student.first_name + ' ' + student.last_name}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template #invalidProject>
+  <div>
+    I could not find the project you asked for
+  </div>
+</template>
