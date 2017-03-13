@@ -1,4 +1,5 @@
 @import "../../style/global-variables";
+@import "~bootstrap/scss/bootstrap";
 :host /deep/ .breadcrumb {
   background-color: white;
   .breadcrumb-item {

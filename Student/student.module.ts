@@ -20,7 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogsComponent } from './logs/logs-component/logs.component';
 import { LogsDisplayComponent } from './logs/logs-display-component/logs-display.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-
+import { DragulaModule } from 'ng2-dragula';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,7 +28,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     ReactiveFormsModule,
     NgbModule,
     SharedDirectivesModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    DragulaModule
   ],
   declarations: [
     SidenavComponent,

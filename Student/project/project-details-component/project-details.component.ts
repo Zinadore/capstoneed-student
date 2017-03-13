@@ -69,7 +69,6 @@ export class ProjectDetailsComponent extends ComponentBase implements OnInit {
 
   iteration_progress(iteration: Iteration) {
     let result = IterationHelpers.getProgressPercent(iteration, this.now);
-    console.log(result)
     return result;
   }
 

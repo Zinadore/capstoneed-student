@@ -11,13 +11,7 @@ export class LogsDisplayComponent extends ComponentBase implements OnInit {
   @Input('logs') log_entries: LogEntry[];
   @Input('title') component_title: string = 'Project Logs';
   @ViewChild('logs_table') logsTable: DatatableComponent;
-  // @HostListener('window:resize', ['$event']) onResize = (event) => {
-  //   if(this.logsTable) {
-  //     this.logsTable.recalculate();
-  //     this.logsTable.recalculateDims();
-  //     console.log('Should recalculate');
-  //   }
-  // };
+
   constructor() {
     super();
   }

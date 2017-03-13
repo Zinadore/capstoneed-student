@@ -40,7 +40,7 @@
         <div class="row">
           <div class="col-md-2" id="duration">
             <h5>Duration Elapsed</h5>
-            <ced-progress-arc class="d-block" [strokeColor]="project.color" [progress]="project_percentage / 100" [backgroundColor]="'#EEEEEE'" [size]="150" [strokeWidth]="40"></ced-progress-arc>
+            <ced-progress-arc [strokeColor]="project.color" [progress]="project_percentage / 100" [backgroundColor]="'#EEEEEE'" [size]="150" [strokeWidth]="45"></ced-progress-arc>
             {{ project_percentage +'%'}}
           </div>
           <div class="col-md-7" id="iterations">
