@@ -5,7 +5,7 @@
   <a class="nav-link" [routerLink]="['/projects', 'enroll']" routerLinkActive="active">Enroll in project</a>
   <!--<a class="nav-link" [routerLink]="['/units']" routerLinkActive="active">Units</a>-->
   <!--<a class="nav-link" [routerLink]="[]" routerLinkActive="active">Assignments</a>-->
-  <a class="nav-link" [routerLink]="['/projects']" routerLinkActive="active">Projects</a>
+  <a class="nav-link" [routerLink]="['/projects']" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">Projects</a>
   <a class="nav-link" [routerLink]="['/peer-assessments']" routerLinkActive="active">Peer Assessments</a>
-  <a class="nav-link" [routerLink]="[]" routerLinkActive="active">Help</a>
+  <a class="nav-link" [routerLink]="['/logs']" routerLinkActive="active">Logs</a>
 </nav>

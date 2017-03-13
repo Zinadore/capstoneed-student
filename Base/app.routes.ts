@@ -8,6 +8,7 @@ import { ProjectEnrollmentComponent } from '../Student/project/project-enrollmen
 import { PeerAssessmentComponent } from '../Student/assessment/peer-assessment-component/peer-assessment.component';
 import { ProjectDetailsComponent } from '../Student/project/project-details-component/project-details.component';
 import { ProjectListComponent } from '../Student/project/project-list-component/project-list.component';
+import { LogsComponent } from '../Student/logs/logs-component/logs.component';
 
 export const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,13 +19,16 @@ export const APP_ROUTES: Routes = [
     ] },
     { path: 'projects', children: [
       { path: 'enroll', component: ProjectEnrollmentComponent},
-      { path: ':id', component: ProjectDetailsComponent },
+      { path: ':id', children:[
+        { path: '', pathMatch: 'full', component: ProjectDetailsComponent }
+      ]},
       { path: '', pathMatch: 'full', component: ProjectListComponent }
     ]},
     { path: 'peer-assessments', children: [
       { path: ':id', component: PeerAssessmentComponent },
       { path: '', pathMatch: 'full', component: PaFeedComponent}
     ]},
+    { path: 'logs', component: LogsComponent },
     { path: '', pathMatch: 'full', redirectTo: 'home' }
   ]}
 ];

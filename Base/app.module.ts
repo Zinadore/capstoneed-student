@@ -16,6 +16,7 @@ import { ToastrModule, ToastContainerModule, ToastrConfig } from 'ngx-toastr';
 import { CedStoreModule } from '../../shared/Store/cedStore.module';
 import { GuardsModule } from '../../shared/Guards/guards.module';
 import { StudentModule } from '../Student/student.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const ToastrGlobalConf: ToastrConfig = {
   maxOpened: 0, // max toasts opened. Toasts will be queued
@@ -48,10 +49,11 @@ const ToastrGlobalConf: ToastrConfig = {
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES),
+    BrowserAnimationsModule,
     NgbModule.forRoot(),
     ToastrModule.forRoot(ToastrGlobalConf),
     ToastContainerModule.forRoot(),
-    Ng2BreadcrumbModule.forRoot(),
+    // Ng2BreadcrumbModule.forRoot(),
     CedStoreModule.provideStore(),
     ServicesModule.forRoot(),
     SharedDirectivesModule,

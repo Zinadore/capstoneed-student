@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   private _rightOpen: boolean;
   private _leftOpen: boolean;
 
-  constructor(private authService: AuthenticationService, private breadcrumbService: BreadcrumbService) {
+  constructor(private authService: AuthenticationService) {
     this._rightOpen = this._leftOpen = false;
   }
 
@@ -26,6 +26,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(window.innerWidth >= 1200) {
+      this._leftOpen = true;
+    }
     this.authService.userType = UserType.STUDENT;
     this.authService.getMe();
   }

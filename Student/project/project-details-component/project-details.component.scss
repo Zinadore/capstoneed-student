@@ -1,6 +1,9 @@
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
 :host {
 
-  &>.container>.card:not(:first-child) {
+  .card.section:not(:first-child) {
     margin-top: 1.5em;
   }
   #project-details {
@@ -18,19 +21,50 @@
   }
 
   #the-team {
+
+    .card-block.collapse {
+      display: none!important;
+
+      &.show {
+        display: flex!important;
+      }
+    }
+
     .member-card {
-      width: 15rem;
+      max-width: 20rem;
+    }
+
+    .card-img-top {
+      max-width:  10rem;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      border-width: 3px;
+      border-color: purple;
     }
 
     .nickname {
       text-align: center;
       color: #5a7391;
-      font-size: 1rem;
+      font-size: 1.6rem;
       font-weight: 600;
     }
 
     .full-name {
       text-align: center;
+      font-size: 0.8rem;
+    }
+  }
+
+  #status {
+    #duration {
+      text-align: center;
+    }
+    #iterations {
+
+    }
+    #points {
+
     }
   }
 }

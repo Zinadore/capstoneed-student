@@ -1,16 +1,22 @@
 <h3 class="card-header">Pending Peer Assessments</h3>
 <div *rxContext="let list on assessments" class="card-block">
+  <ng-template [ngTemplateOutlet]="got_assessments" [ngOutletContext]="{assignment_list: list}" *ngIf="list.length > 0"></ng-template>
+  <ng-template [ngTemplateOutlet]="no_assessments" *ngIf="list.length == 0"></ng-template>
+
+</div>
+
+<ng-template #got_assessments let-list="assignment_list">
   <div class="list-group list-group-flush">
     <ced-pa-feed-item class="list-group-item"
                       *ngFor="let assessment of list"
                       [assessment]="assessment"
                       [project]="getProject(assessment.project_id) | async"
     ></ced-pa-feed-item>
-
-    <!--<ced-pa-feed-item class="list-group-item"-->
-                      <!--*ngFor="let assessment of list"-->
-                      <!--[assessment]="assessment"-->
-                      <!--[project]="getProject(assessment.project_id) | async"-->
-    <!--&gt;</ced-pa-feed-item>-->
   </div>
-</div>
+</ng-template>
+
+<ng-template #no_assessments>
+  <p>
+    You have no pending peer assessments
+  </p>
+</ng-template>

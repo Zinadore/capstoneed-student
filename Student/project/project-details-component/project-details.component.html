@@ -1,11 +1,11 @@
-<template [ngTemplateOutlet]="validProject" *ngIf="project"></template>
-<template [ngTemplateOutlet]="invalidProject" *ngIf="!project"></template>
+<ng-template [ngTemplateOutlet]="validProject" *ngIf="project"></ng-template>
+<ng-template [ngTemplateOutlet]="invalidProject" *ngIf="!project"></ng-template>
 
 
 
-<template #validProject>
-  <div class="container">
-    <div class="card" id="project-details">
+<ng-template #validProject>
+  <div class="container-fluid">
+    <div class="card section" id="project-details">
       <div class="card-header d-flex" (click)="toggleDescription()">
         <h4>{{ project.project_name }}</h4>
         <i role="button" class="fa ml-auto align-self-center" [ngClass]="{ 'fa-chevron-down': isDescriptionClosed, 'fa-chevron-up': !isDescriptionClosed }"></i>
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card section" id="the-game">
       <h4 class="card-header">Gamification</h4>
       <div class="card-block">
         <p>
@@ -34,9 +34,43 @@
       </div>
     </div>
 
-    <div class="card" id="the-team">
-      <h3 class="card-header">The team</h3>
-      <div class="card-block d-flex justify-content-between flex-wrap">
+    <div class="card section" id="status">
+      <h4 class="card-header">Project Status</h4>
+      <div class="card-block">
+        <div class="row">
+          <div class="col-md-2" id="duration">
+            <h5>Duration Elapsed</h5>
+            <ced-progress-arc class="d-block" [strokeColor]="project.color" [progress]="project_percentage / 100" [backgroundColor]="'#EEEEEE'" [size]="150" [strokeWidth]="40"></ced-progress-arc>
+            {{ project_percentage +'%'}}
+          </div>
+          <div class="col-md-7" id="iterations">
+            <h5>Iteration Progress</h5>
+            <p *ngFor="let iteration of assignment.iterations">
+              {{iteration.name}}
+              <ngb-progressbar [value]="iteration_progress(iteration)"></ngb-progressbar>
+              Starts {{iteration.start_date | date: 'dd/MM/yy' }} | Ends: {{ iteration.deadline | date: 'dd/MM/yy'}}
+            </p>
+          </div>
+          <div class="col-md-3" id="points">
+            <h5>Points Contribution</h5>
+            <dl class="row">
+              <ng-template ngFor let-student [ngForOf]="project.students">
+                <dt class="col-6">{{student.nickname}}</dt>
+                <dd class="col-6">0 points</dd>
+              </ng-template>
+            </dl>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card section"  id="the-team">
+      <div class="card-header d-flex" (click)="toggleTeam()">
+        <h4>The Team</h4>
+        <i role="button" class="fa ml-auto align-self-center" [ngClass]="{ 'fa-chevron-down': isTeamClosed, 'fa-chevron-up': !isTeamClosed }"></i>
+      </div>
+      <div class="card-block d-flex justify-content-around flex-wrap align-content-around" [ngbCollapse]="isTeamClosed">
         <div class="card member-card" *ngFor="let student of project.students">
           <img [src]="student.avatar_url" alt="" class="card-img-top">
           <div class="card-block">
@@ -46,11 +80,14 @@
         </div>
       </div>
     </div>
-  </div>
-</template>
 
-<template #invalidProject>
+
+
+  </div>
+</ng-template>
+
+<ng-template #invalidProject>
   <div>
     I could not find the project you asked for
   </div>
-</template>
+</ng-template>

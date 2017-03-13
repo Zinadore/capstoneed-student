@@ -1,10 +1,10 @@
 <div *rxContext="let user on user">
-  <template [ngTemplateOutlet]="validUser" [ngOutletContext]="{ user: user }" *ngIf="user"></template>
-  <template [ngTemplateOutlet]="invalidUser" *ngIf="!user"></template>
+  <ng-template [ngTemplateOutlet]="validUser" [ngOutletContext]="{ user: user }" *ngIf="user"></ng-template>
+  <ng-template [ngTemplateOutlet]="invalidUser" *ngIf="!user"></ng-template>
 </div>
 
 
-<template #validUser let-user="user">
+<ng-template #validUser let-user="user">
   <img class="img-fluid mx-auto d-block user-image" [src]="user.avatar_url" />
   <div class="username">
     {{ user.first_name + ' ' + user.last_name}}
@@ -28,11 +28,11 @@
     <button class="btn btn-default">My Profile</button>
     <button class="btn btn-default" (click)="onLogout()">Log Out</button>
   </div>
-</template>
+</ng-template>
 
-<template #invalidUser>
+<ng-template #invalidUser>
   <div class="btn-group-vertical">
     <button class="btn btn-default" [routerLink]="['/login']">Login</button>
     <button class="btn btn-default" >Register</button>
   </div>
-</template>
+</ng-template>

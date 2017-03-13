@@ -7,6 +7,8 @@
     a {
       color: inherit;
     }
+
+    font-size: 1.2rem;
   }
 
   .block-header {
@@ -37,6 +39,9 @@
     width: 100%;
     .description {
       margin-left: 5px;
+      dd {
+        max-width: 8em;
+      }
     }
   }
 

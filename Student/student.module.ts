@@ -17,13 +17,18 @@ import { ProjectDetailsComponent } from './project/project-details-component/pro
 import { ProjectListComponent } from './project/project-list-component/project-list.component';
 import { ProjectListItemComponent } from './project/project-list-item-component/project-list-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LogsComponent } from './logs/logs-component/logs.component';
+import { LogsDisplayComponent } from './logs/logs-display-component/logs-display.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
     NgbModule,
-    SharedDirectivesModule
+    SharedDirectivesModule,
+    NgxDatatableModule
   ],
   declarations: [
     SidenavComponent,
@@ -38,7 +43,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProfileSidebarComponent,
     ProjectDetailsComponent,
     ProjectListComponent,
-    ProjectListItemComponent
+    ProjectListItemComponent,
+    LogsComponent,
+    LogsDisplayComponent
   ],
   providers: [],
   exports: [

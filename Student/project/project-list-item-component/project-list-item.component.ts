@@ -4,6 +4,8 @@ import { Project } from '../../../../shared/Store/Models/project';
 import { Assignment } from '../../../../shared/Store/Models/assignment';
 import * as moment from 'moment';
 import { Iteration } from '../../../../shared/Store/Models/iteration';
+import { ProjectHelpers } from '../../../../shared/Helpers/project.helpers';
+import { IterationHelpers } from '../../../../shared/Helpers/iteration.helpers';
 
 @Component({
   selector: 'ced-project-list-item',
@@ -29,20 +31,12 @@ export class ProjectListItemComponent extends ComponentBase implements OnChanges
   }
 
   ngOnChanges() {
-      let end: any = moment(this.assignment.end_date, 'YYYY-MM-DD').toDate();
-      let start: any = moment(this.assignment.start_date, 'YYYY-MM-DD').toDate();
-      this.percentage_completed = Math.round((this.now - start) / (end - start) * 1000);
+    this.percentage_completed = ProjectHelpers.timePassedPercentage(this.assignment, this.now);
   }
 
   getIterationsCompleted(): string {
-    let accumulator = 0;
-    for(let i = 0; i < this.assignment.iterations.length; i++) {
-      let it = this.assignment.iterations[i];
-      if(this.isIterationCompleted(it)) {
-        accumulator++;
-      }
-    }
-    return `${accumulator}/${this.assignment.iterations.length}`;
+    let completed = ProjectHelpers.getNumberOfIterationsCompleted(this.assignment.iterations, this.now);
+    return `${completed}/${this.assignment.iterations.length}`;
   }
 
   private isIterationCompleted(iteration: Iteration): boolean {
@@ -52,13 +46,7 @@ export class ProjectListItemComponent extends ComponentBase implements OnChanges
   }
 
   iteration_progress(iteration: Iteration): number {
-    if(iteration.start_date >= this.now) {
-      return 0;
-    }
-    let end: any = moment(iteration.deadline, 'YYYY-MM-DD').toDate();
-    let start: any = moment(iteration.start_date, 'YYYY-MM-DD').toDate();
-    return Math.round((this.now - start) / (end -start) * 1000);
-
+    return IterationHelpers.getProgressPercent(iteration, this.now);
   }
 
 

@@ -1,4 +1,4 @@
-<h3>Active Projects</h3>
+<h3>My Active Projects</h3>
 <div class="projects-container" *rxContext="let list on project$">
   <ced-project-list-item *ngFor="let p of list" [project]="p" [assignment]="getAssignment(p.assignment_id) | async"></ced-project-list-item>
 </div>

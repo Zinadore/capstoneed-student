@@ -14,7 +14,7 @@ import * as moment from 'moment/moment';
 export class PaFeedItemComponent implements OnChanges {
   @Input('assessment') _pa_form: PeerAssessmentForm;
   @Input('project') _form_project: Project;
-  @HostBinding('style.border-color') border_color = 'black';
+  @HostBinding('style.border-left-color') border_color = 'black';
 
   private time_remaining = '';
   private now = Date.now();
