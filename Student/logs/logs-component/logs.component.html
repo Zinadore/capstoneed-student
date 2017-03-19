@@ -1,31 +1,47 @@
 <div class="card">
-  <h4 class="card-header">Project Selection</h4>
+  <h4 class="card-header">Project Logs</h4>
   <div class="card-block">
 
-    <div class="row justify-content-start justify-content-md-center">
+    <div class="row" id="first-row">
       <div class="col-12 col-md-6">
-        <form  [formGroup]="projectSelectionForm">
-          <div class="form-group">
-            <label for="projectSelect">Please select the project for which you want to see your logs</label>
-            <select class="form-control" id="projectSelect" formControlName="project">
-              <option value="0">Select one...</option>
-              <option *ngFor="let project of projects" value="{{project.id}}">{{ project.project_name + ' - ' + project.team_name}}</option>
-            </select>
-          </div>
+        <div class="d-flex flex-column">
+          <form  [formGroup]="projectSelectionForm">
+            <div class="form-group">
+              <label for="projectSelect">Please select the project for which you want to see your logs</label>
+              <select class="form-control" id="projectSelect" formControlName="project">
+                <option value="0">Select one...</option>
+                <option *ngFor="let project of projects" value="{{project.id}}">{{ project.project_name + ' - ' + project.team_name}}</option>
+              </select>
+            </div>
+          </form>
 
-        </form>
+          <div class="card logs">
+            <h5 class="card-header">Logs</h5>
+            <div class="card-block">
+              <ced-logs-display
+                *ngIf="projectSelectionForm.valid else selectProjectTemplate"
+                [logs]="logs"
+                (logSelected)="onLogSelected($event)">
+              </ced-logs-display>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-12 col-md-6">
+        <ced-log-preview
+          [log]="selectedLog"
+        ></ced-log-preview>
       </div>
     </div>
   </div>
 </div>
-<div class="card logs">
-  <h5 class="card-header">Logs</h5>
-  <div class="card-block">
-    <ced-logs-display
-      *ngIf="projectSelectionForm.valid"
-      [logs]="logs"
-    >
-    </ced-logs-display>
-  </div>
-</div>
 
+<ced-create-log *ngIf="selectedProjectId"
+                [id]="selectedProjectId"
+                [open]="false">
+</ced-create-log>
+<ng-template #selectProjectTemplate>
+  Please select a project to find logs
+</ng-template>

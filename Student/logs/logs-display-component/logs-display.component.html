@@ -1,20 +1,18 @@
-<table style="width: 100%" class="table-bordered table-stripped table-hover">
-  <thead>
+<div class="table-wrapper">
+  <table class="table-bordered table-stripped table-hover">
+    <thead>
     <tr>
       <th>Text</th>
       <th>Stage</th>
       <th>Date Worked</th>
-      <th>Work Duration</th>
-      <th>Date Submitted</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let entry of log_entries">
-      <td>{{ entry.text }}</td>
+    </thead>
+    <tbody class="logs-body">
+    <tr *ngFor="let entry of log_entries; let i=index" (click)="emitLog(i)">
+      <td class="text text-truncate">{{ entry.text }}</td>
       <td>{{ entry.stage }}</td>
-      <td>{{ entry.date_worked | date:'dd/MM/yy' }}</td>
-      <td>{{ entry.time_worked | date:'hh' }}</td>
-      <td>{{ entry.date_submitted | date:'dd/MM/yy' }}</td>
+      <td>{{ getDateFromUnix(entry.date_worked) | date:'dd/MM/yy' }}</td>
     </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

@@ -18,6 +18,8 @@ export class LogsComponent extends ComponentBase implements OnInit {
   private projectSelectionForm: FormGroup;
   private projects: Project[];
   private logs: LogEntry[];
+  private selectedLog;
+  private selectedProjectId;
 
 
   constructor(private fb: FormBuilder, private projectService: ProjectService, private store: Store<IAppState>,
@@ -43,9 +45,19 @@ export class LogsComponent extends ComponentBase implements OnInit {
     let pSelect = this.projectSelectionForm.get('project');
 
     this.disposeOnDestroy(pSelect.valueChanges
-      .filter(_ => pSelect.valid)
-      .subscribe(id => this.logService.getAll(id))
+      .subscribe(id => {
+        if (pSelect.valid) {
+          this.logService.getAll(id);
+          this.selectedProjectId = id;
+        } else {
+          this.selectedProjectId = null;
+        }
+      })
     )
+  }
+
+  onLogSelected(event) {
+    this.selectedLog = this.logs[event];
   }
 
 

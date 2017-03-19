@@ -1,0 +1,25 @@
+<div class="card">
+  <h5 class="card-header">Log Preview</h5>
+  <div class="card-block">
+    <div *ngIf="log_entry; else emptyBlock">
+      <dl class="row">
+        <dt class="col-3">Date Worked</dt>
+        <dd class="col-9">{{getDateFromUnix(log_entry.date_worked) | date:'dd/MM/yy'}}</dd>
+        <dt class="col-3">Time Worked</dt>
+        <dd class="col-9">{{log_entry.time_worked | date:'hh'}} hours</dd>
+        <dt class="col-3">Log submitted at</dt>
+        <dd class="col-9">{{getDateFromUnix(log_entry.date_submitted) | date:'dd/MM/yy hh:mm:ss'}}</dd>
+        <dt class="col-12">Text</dt>
+        <dd class="col-12">
+          <textarea rows="5" readonly id="textArea">{{log_entry.text}}</textarea>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyBlock>
+  <p>
+    Select a log to preview
+  </p>
+</ng-template>

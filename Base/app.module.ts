@@ -1,5 +1,4 @@
 import { NgModule, ApplicationRef } from '@angular/core';
-import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
 import { createNewHosts, removeNgStyles } from '@angularclass/hmr';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';

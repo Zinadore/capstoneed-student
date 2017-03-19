@@ -2,7 +2,6 @@ import '../../style/app.scss';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../shared/Services/authentication.service';
 import { UserType } from '../../shared/Store/Models/user';
-import { BreadcrumbService } from 'ng2-breadcrumb/ng2-breadcrumb';
 
 @Component({
   selector: 'ced-app',

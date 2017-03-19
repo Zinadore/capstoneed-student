@@ -1,0 +1,25 @@
+:host {
+  & > .card {
+    margin-top: 1.5em;
+  }
+}
+
+.form-description-text {
+  padding: 0;
+  font-size: 0.7rem;
+}
+
+#form-buttons {
+  width: 100%;
+}
+
+#log_comment {
+  height: 90%;
+}
+
+.card-header {
+  display: flex;
+  h5 {
+    flex: 1;
+  }
+}

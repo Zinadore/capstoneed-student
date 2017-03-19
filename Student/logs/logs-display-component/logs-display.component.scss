@@ -1,0 +1,15 @@
+.table-wrapper {
+  height: 250px;
+  overflow-y: scroll;
+  table {
+    width: 100%;
+  }
+}
+
+.logs-body {
+  tr {
+    cursor: pointer;
+    cursor: hand;
+  }
+}
+

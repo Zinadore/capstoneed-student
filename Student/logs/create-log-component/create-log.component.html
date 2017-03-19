@@ -1,0 +1,58 @@
+<div class="card">
+  <div class="card-header">
+    <h5>New Log Entry</h5>
+    <i class="fa" [ngClass]="{ 'fa-chevron-down': !showOpen, 'fa-chevron-up':  showOpen}" (click)="toggleOpen()"></i>
+  </div>
+  <div class="card-block" [ngbCollapse]="!showOpen">
+    <form class="form" [formGroup]="logForm">
+      <div class="row">
+
+        <div class="col-12 col-md-3">
+          <div class="form-group">
+            <label for="work_date">Work Date</label>
+            <div class="input-group">
+              <span class="input-group-addon" (click)="ed.toggleCalendar();$event.stopPropagation()"><i class="fa fa-calendar" ></i></span>
+              <input class="form-control" ngx-mydatepicker #ed="ngx-mydatepicker" [options]="myOptions" id="work_date" formControlName="date_worked">
+            </div>
+            <small class="form-text text-muted">The day you worked on the project</small>
+          </div>
+
+          <div class="form-group">
+            <label for="time_worked">Time Worked</label>
+            <div class="">
+              <input type="number" id="time_worked" class="form-control" min="0" max="24" formControlName="time_worked">
+            </div>
+            <small class="form-text text-muted">How many hours you spent working</small>
+          </div>
+
+          <div class="form-group">
+            <label for="stage">Stage</label>
+            <select id="stage" class="form-control" formControlName="stage">
+              <option value="0">Select one...</option>
+              <option value="Analysis">Analysis</option>
+              <option value="Design">Design</option>
+              <option value="Implementation">Implementation</option>
+              <option value="Testing">Testing</option>
+            </select>
+            <small class="form-text text-muted">For what stage of the project</small>
+          </div>
+
+        </div>
+
+        <div class="form-group col-12 col-md-7">
+          <label for="log_comment">Comment</label>
+          <textarea class="form-control" id="log_comment" formControlName="log_comment"></textarea>
+          <small class="form-text text-muted">A small description of what you did</small>
+        </div>
+
+        <div class="form-group col-12 col-md-2">
+          <div class="btn-group-vertical" id="form-buttons">
+            <button class="btn btn-success" [disabled]="!logForm.valid" (click)="submitEntry()">Save</button>
+            <button class="btn btn-warning" (click)="resetForm()">Reset</button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

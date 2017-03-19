@@ -1,15 +1,16 @@
 @import "../../style/global-variables";
 @import "~bootstrap/scss/bootstrap";
-:host /deep/ .breadcrumb {
-  background-color: white;
-  .breadcrumb-item {
-    color: #0275d8;
 
-    &.active {
-      color: #636c72;
-    }
-  }
-}
+//:host /deep/ .breadcrumb {
+//  background-color: white;
+//  .breadcrumb-item {
+//    color: #0275d8;
+//
+//    &.active {
+//      color: #636c72;
+//    }
+//  }
+//}
 
 
 #wrapper {

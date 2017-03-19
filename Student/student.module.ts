@@ -21,6 +21,9 @@ import { LogsComponent } from './logs/logs-component/logs.component';
 import { LogsDisplayComponent } from './logs/logs-display-component/logs-display.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { DragulaModule } from 'ng2-dragula';
+import { LogPreviewComponent } from './logs/log-preview-component/log-preview.component';
+import { CreateLogComponent } from './logs/create-log-component/create-log.component';
+import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 @NgModule({
   imports: [
     CommonModule,
@@ -29,7 +32,8 @@ import { DragulaModule } from 'ng2-dragula';
     NgbModule,
     SharedDirectivesModule,
     NgxDatatableModule,
-    DragulaModule
+    DragulaModule,
+    NgxMyDatePickerModule
   ],
   declarations: [
     SidenavComponent,
@@ -46,7 +50,9 @@ import { DragulaModule } from 'ng2-dragula';
     ProjectListComponent,
     ProjectListItemComponent,
     LogsComponent,
-    LogsDisplayComponent
+    LogsDisplayComponent,
+    LogPreviewComponent,
+    CreateLogComponent
   ],
   providers: [],
   exports: [
