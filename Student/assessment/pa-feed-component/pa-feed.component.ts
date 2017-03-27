@@ -23,7 +23,7 @@ export class PaFeedComponent extends ComponentBase implements OnInit {
   }
 
   ngOnInit() {
-    this.disposeOnDestroy(this.assessmentService.getAllActive().subscribe());
+    this.assessmentService.getAllActive();
   }
 
   getProject(project_id: number): Observable<Project> {

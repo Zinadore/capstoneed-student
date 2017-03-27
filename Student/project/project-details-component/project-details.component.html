@@ -7,7 +7,7 @@
   <div class="container-fluid">
     <div class="card section" id="project-details">
       <div class="card-header d-flex" (click)="toggleDescription()">
-        <h4>{{ project.project_name }}</h4>
+        <h4>Project: {{ project.project_name }}</h4>
         <i role="button" class="fa ml-auto align-self-center" [ngClass]="{ 'fa-chevron-down': isDescriptionClosed, 'fa-chevron-up': !isDescriptionClosed }"></i>
       </div>
       <div class="card-block" [ngbCollapse]="isDescriptionClosed">
@@ -67,7 +67,7 @@
 
     <div class="card section"  id="the-team">
       <div class="card-header d-flex" (click)="toggleTeam()">
-        <h4>The Team</h4>
+        <h4>The Team: {{project.team_name}}</h4>
         <i role="button" class="fa ml-auto align-self-center" [ngClass]="{ 'fa-chevron-down': isTeamClosed, 'fa-chevron-up': !isTeamClosed }"></i>
       </div>
       <div class="card-block d-flex justify-content-around flex-wrap align-content-around" [ngbCollapse]="isTeamClosed">

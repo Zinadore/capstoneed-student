@@ -66,7 +66,7 @@ export class CreateLogComponent extends ComponentBase implements OnInit {
     };
 
 
-    this.createSub = this.logService.create(entry, this.project_id)
+    this.createSub = this.logService.create$(entry, this.project_id)
       .subscribe(
         value => {
           this.logForm.reset({

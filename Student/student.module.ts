@@ -24,6 +24,7 @@ import { DragulaModule } from 'ng2-dragula';
 import { LogPreviewComponent } from './logs/log-preview-component/log-preview.component';
 import { CreateLogComponent } from './logs/create-log-component/create-log.component';
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
+import { RangeQuestionComponent } from './assessment/range-question-component/range-question.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -52,8 +53,10 @@ import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
     LogsComponent,
     LogsDisplayComponent,
     LogPreviewComponent,
-    CreateLogComponent
+    CreateLogComponent,
+    RangeQuestionComponent
   ],
+  entryComponents: [RangeQuestionComponent],
   providers: [],
   exports: [
     SidenavComponent,

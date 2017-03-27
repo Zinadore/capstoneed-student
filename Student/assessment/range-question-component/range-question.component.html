@@ -1,0 +1,20 @@
+<div class="d-flex">
+  <div [dragula]="'students'" [dragulaModel]="students" id="students" >
+    <p  *ngFor="let student of students">
+      <img [src]="student.avatar_url">
+      {{student.nickname}}
+    </p>
+  </div>
+  <div [dragula]="'students'" [dragulaModel]="category1" id="category1">
+    <p  *ngFor="let student of category1">
+      <img [src]="student.avatar_url">
+      {{student.nickname}}
+    </p>
+  </div>
+  <div [dragula]="'students'" [dragulaModel]="category2" id="category2">
+    <p  *ngFor="let student of category2">
+      <img [src]="student.avatar_url">
+      {{student.nickname}}
+    </p>
+  </div>
+</div>
