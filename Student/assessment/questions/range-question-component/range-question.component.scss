@@ -1,0 +1,102 @@
+$categoryColors: (
+  category1-color: #4CAF50,
+  category2-color: #A5A328,
+  category3-color: #FF9800,
+  category4-color: #F96D1B,
+  category5-color: #F44336,
+  students-color : #EEEEEE
+);
+
+$categoryBackgrounds: (
+  category1-color: #81C784,
+  category2-color: #A5D6A7,
+  category3-color: #FFB74D,
+  category4-color: #FF8A65,
+  category5-color: #EF5350,
+  students-color : #EEEEEE
+);
+
+.student-draggable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //text-align: center;
+  //padding: 0 15px;
+  //touch-action: none;
+
+  .student-image {
+    max-width: 10em;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 50%;
+  }
+
+  .student-nickname {
+    font-size: 1em;
+    text-wrap: normal;
+    max-width: 4em;
+  }
+}
+
+@mixin category($color) {
+  min-width: 2rem;
+  min-height: 2rem;
+  border: 4px solid map-get($categoryColors, $color);
+  background-color: map-get($categoryBackgrounds, $color);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: 0 5px;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  #students {
+    @include category(students-color);
+    flex-shrink: 1;
+  }
+
+  #assessment-categories {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+
+    .category-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .smiley {
+        text-align: center;
+      }
+
+      @for $i from 1 through 5 {
+        #category#{$i} {
+          @include category(#{category#{$i}-color});
+          height: 100%;
+        }
+      }
+  }
+
+  }
+}
+
+
+
+
+
+
+
+//
+//#category1 {
+//  @include category($category1-color);
+//}
+//
+//#category2 {
+//  @include category($category2-color);
+//}

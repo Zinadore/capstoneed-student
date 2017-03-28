@@ -1,0 +1,29 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h4>{{question_input.text}}</h4>
+    <hr class="my-4">
+    <button class="btn btn-primary btn-sm" (click)="toggleHelp()">Need help?</button>
+    <p class="lead" [ngbCollapse]="isHelpCollapsed">Drag and drop your teammate's avatars to the category that you believe best answers the questions. The greener the color the more positive the answer. Note that you must rate all your teammates to proceed</p>
+  </div>
+</div>
+<div id="wrapper">
+  <div [dragula]="'students'" [dragulaModel]="students" id="students" >
+    <div  *ngFor="let student of students" class="student-draggable" touch-action="none">
+      <img [src]="student.avatar_url" class="student-image">
+      <span class="student-nickname">{{student.nickname}}</span>
+    </div>
+  </div>
+  <div id="assessment-categories">
+    <div class="category-wrapper" *ngFor="let index of [0, 1, 2, 3, 4]" >
+      <div class="smiley">{{ 'smiley' + index }}</div>
+      <div [dragula]="'students'" [dragulaModel]="categories[index]" id="{{ 'category' + (index + 1) }}">
+        <div  *ngFor="let student of categories[index]" class="student-draggable">
+          <img [src]="student.avatar_url" class="student-image">
+          <span class="student-nickname">{{student.nickname}}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

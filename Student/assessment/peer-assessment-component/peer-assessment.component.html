@@ -1,9 +1,9 @@
-<div *rxContext="let pa on assessment">
+<ng-container *rxContext="let pa on assessment">
+  <ced-form-wizard [onFinish]="wizard_OnFinish">
+    <ced-form-wizard-step *ngFor="let question of pa.questions; let i = index">
+      <ced-pa-question [question]="question" [index]="i" [project]="project | async" (answersOutput)="onReceivedAnswer($event)"></ced-pa-question>
+    </ced-form-wizard-step>
+  </ced-form-wizard>
+</ng-container>
 
-    <ced-form-wizard *ngIf="pa">
-      <ced-form-wizard-step *ngFor="let question of pa.questions; let i = index">
-        <ced-pa-question [question]="question" [index]="i" [project]="project | async"></ced-pa-question>
-      </ced-form-wizard-step>
-    </ced-form-wizard>
 
-</div>

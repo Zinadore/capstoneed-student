@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, Output, EventEmitter, HostBinding, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ced-header',
@@ -8,7 +8,7 @@ import { Component, Output, EventEmitter, HostBinding } from '@angular/core';
     class: 'navbar navbar-fixed-top navbar-light'
   }
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
   @Output('burgerClicked') _burgerClicked: EventEmitter<boolean>;
   @Output('profileClicked') _profileClicked: EventEmitter<boolean>;
@@ -19,6 +19,12 @@ export class HeaderComponent {
     this._burgerClicked = new EventEmitter<boolean>();
     this._profileClicked = new EventEmitter<boolean>();
     this.isLogoVisible = true;
+  }
+
+  ngOnInit() {
+    if(window.innerWidth >= 1200) {
+      this.onBurgerClicked();
+    }
   }
 
   private onBurgerClicked(): void {

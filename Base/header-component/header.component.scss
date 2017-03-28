@@ -13,13 +13,14 @@
     }
   }
 
+
   &.with-logo {
     .logo a{
       display: inherit;
     }
   }
 
-  .logo {
+  & .logo {
     flex: 1;
     text-align: center;
     a {

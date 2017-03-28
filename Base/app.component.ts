@@ -25,9 +25,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(window.innerWidth >= 1200) {
-      this._leftOpen = true;
-    }
     this.authService.userType = UserType.STUDENT;
     this.authService.getMe();
   }
