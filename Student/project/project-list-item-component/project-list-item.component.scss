@@ -1,5 +1,15 @@
+@import "../../../../style/student-app";
+
 :host {
+  @extend .shadow-layer-2;
+  @extend .shadow-hoverable;
+  //@extend .no-radius;
+  border: none;
+
   .card-header {
+    font-size: 1.2rem;
+    //@extend .no-radius;
+
     &:hover {
       cursor: pointer;
       cursor: hand;
@@ -7,8 +17,6 @@
     a {
       color: inherit;
     }
-
-    font-size: 1.2rem;
   }
 
   .block-header {
@@ -17,6 +25,8 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin-bottom: 10px;
+    //@extend .no-radius;
+
     .completed {
       margin-right: 3px;
     }
@@ -31,6 +41,7 @@
       }
     }
   }
+
 
   .summary {
     display: flex;

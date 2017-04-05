@@ -1,0 +1,81 @@
+@import "../../../style/student-variables";
+@import "../../../style/student-app";
+
+
+:host {
+  display: block;
+  width: 100%;
+
+  .quick-access-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    @include media-breakpoint-down(md) {
+      flex-wrap: wrap;
+    }
+
+    .quick-access-item {
+      flex: 1;
+      flex-basis: 100%;
+      color: #ffffff;
+      border: 1px solid #000;
+      cursor: pointer;
+      cursor: hand;
+      padding-left: 0.5em;
+
+      @include media-breakpoint-down(md) {
+        &:not(:first-child), &:not(:last-child){
+          margin-top: 0.5em;
+        }
+
+        &:last-child {
+          margin-top: 0;
+        }
+      }
+
+      &:not(:first-child), &:not(:last-child){
+        margin-right: 0.5em;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      @each $cname, $color in $student-colors {
+        &.#{$cname} {
+          background-color: $color;
+          border-color: darken($color, 3);
+        }
+      }
+
+      .quick-access-content {
+        padding: 0;
+        padding-bottom: 0.5em;
+
+        .title {
+          font-size: 1.5em;
+          margin-bottom: 0.8rem;
+        }
+
+        .subtitle {
+          font-size: 1em;
+          margin: 0;
+        }
+
+      }
+
+    }
+
+  }
+}
+
+.box {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+}
+
+.box-green {
+  background-color: green;
+}

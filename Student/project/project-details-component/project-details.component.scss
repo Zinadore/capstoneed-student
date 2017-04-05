@@ -1,11 +1,16 @@
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins/breakpoints';
+@import '../../../../style/student-app';
+@import '../../../../style/student-variables';
 
 :host {
-
+  display: block;
+  .card.section {
+    @extend .shadow-layer-1;
+    border: none;
+  }
   .card.section:not(:first-child) {
     margin-top: 1.5em;
   }
+
   #project-details {
     .card-block {
       display: none;
@@ -64,6 +69,64 @@
 
     }
     #points {
+
+    }
+  }
+
+  #the-game {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5em;
+
+    .quick-access-item {
+      flex: 1;
+      flex-basis: 100%;
+      color: #ffffff;
+      border: 1px solid #000;
+      cursor: pointer;
+      cursor: hand;
+      padding-left: 0.5em;
+
+      @include media-breakpoint-down(sm) {
+        &:not(:first-child), &:not(:last-child) {
+          margin-top: 0.5em;
+        }
+
+        &:last-child {
+          margin-top: 0;
+        }
+      }
+
+      &:not(:first-child), &:not(:last-child) {
+        margin-right: 0.5em;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      @each $cname, $color in $student-colors {
+        &.#{$cname} {
+          background-color: $color;
+          border-color: darken($color, 3);
+        }
+      }
+
+      .quick-access-content {
+        padding: 0;
+        padding-bottom: 0.5em;
+
+        .title {
+          font-size: 1.5em;
+          margin-bottom: 0.8rem;
+        }
+
+        .subtitle {
+          font-size: 1em;
+          margin: 0;
+        }
+
+      }
 
     }
   }

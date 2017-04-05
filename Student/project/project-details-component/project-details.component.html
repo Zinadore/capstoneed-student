@@ -6,7 +6,7 @@
 <ng-template #validProject>
   <div class="container-fluid">
     <div class="card section" id="project-details">
-      <div class="card-header d-flex" (click)="toggleDescription()">
+      <div class="card-header d-flex" [style.background-color]="project.color" (click)="toggleDescription()">
         <h4>Project: {{ project.project_name }}</h4>
         <i role="button" class="fa ml-auto align-self-center" [ngClass]="{ 'fa-chevron-down': isDescriptionClosed, 'fa-chevron-up': !isDescriptionClosed }"></i>
       </div>
@@ -25,17 +25,31 @@
       </div>
     </div>
 
-    <div class="card section" id="the-game">
-      <h4 class="card-header">Gamification</h4>
-      <div class="card-block">
-        <p>
-          Insert coin here ->  |
-        </p>
+    <!--<div class="card section" id="the-game">-->
+      <!--<h4 class="card-header bg-warning">Team current rank: 4</h4>-->
+      <!--<div class="card-block">-->
+        <!--<p>-->
+          <!--Insert coin here ->  |-->
+        <!--</p>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div id="the-game">
+      <div class="quick-access-item orange shadow-layer-2 shadow-hoverable">
+        <h4 class="title">Current team rank: 4</h4>
+      </div>
+
+      <div class="quick-access-item deep-blue shadow-layer-2 shadow-hoverable">
+        Statistics
+      </div>
+
+      <div class="quick-access-item deep-blue shadow-layer-2 shadow-hoverable">
+        Logs
       </div>
     </div>
 
     <div class="card section" id="status">
-      <h4 class="card-header">Project Status</h4>
+      <h4 class="card-header" [style.background-color]="project.color">Project Status</h4>
       <div class="card-block">
         <div class="row">
           <div class="col-md-2" id="duration">
@@ -54,10 +68,12 @@
           <div class="col-md-3" id="points">
             <h5>Points Contribution</h5>
             <dl class="row">
-              <ng-template ngFor let-student [ngForOf]="project.students">
-                <dt class="col-6">{{student.nickname}}</dt>
-                <dd class="col-6">0 points</dd>
-              </ng-template>
+              <dt class="col-6"><span class="text-success">My Contribution</span></dt>
+              <dd class="col-6"><span class="text-success">50 points</span></dd>
+              <dt class="col-6">Team Total</dt>
+              <dd class="col-6">500 points</dd>
+              <dt class="col-6">Team Average</dt>
+              <dd class="col-6">30 points</dd>
             </dl>
           </div>
 

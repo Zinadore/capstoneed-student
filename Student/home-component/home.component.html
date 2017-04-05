@@ -1,18 +1,8 @@
 <div *rxContext="let user on _user">
   <div *ngIf="user">
     <div class="row">
-      <div class="col-md-10">
-        <ced-pa-feed></ced-pa-feed>
-      </div>
-      <div class="col-md-2">
-        <div class="btn-group-vertical" style="width: 100%;">
-          <button [routerLink]="['/projects', 'enroll']" class="btn btn-primary">
-            Enroll in Project
-          </button>
-          <button [routerLink]="['/logs']" class="btn btn-primary">
-            Log your work
-          </button>
-        </div>
+      <div class="col-12">
+        <ced-home-dashboard></ced-home-dashboard>
       </div>
     </div>
     <ced-project-list style="margin-top: 2rem; display: block"></ced-project-list>

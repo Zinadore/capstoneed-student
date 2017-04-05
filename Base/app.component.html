@@ -7,7 +7,7 @@
     </div>
     <ced-sidenav></ced-sidenav>
   </div>
-  <div id="page-content-wrapper">
+  <div id="page-content-wrapper" [ngClass]="{ 'left-open': _leftOpen, 'right-open': _rightOpen }">
     <ced-header (burgerClicked)="toggleLeft()" (profileClicked)="toggleRight()"></ced-header>
     <div class="container-fluid">
       <!--<span>You are here:</span>-->

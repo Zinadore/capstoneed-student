@@ -27,6 +27,7 @@ import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 import { RangeQuestionComponent } from './assessment/questions/range-question-component/range-question.component';
 import { UnknownQuestionComponent } from './assessment/questions/unknown-question.component';
 import { TextQuestionComponent } from './assessment/questions/text-question-component/text-question.component';
+import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { TextQuestionComponent } from './assessment/questions/text-question-comp
     CreateLogComponent,
     RangeQuestionComponent,
     UnknownQuestionComponent,
-    TextQuestionComponent
+    TextQuestionComponent,
+    HomeDashboardComponent
   ],
   entryComponents: [
     RangeQuestionComponent,

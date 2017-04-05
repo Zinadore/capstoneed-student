@@ -1,0 +1,29 @@
+<div class="quick-access-list">
+  <div class="quick-access-item blue shadow-layer-3 shadow-hoverable" [routerLink]="['/peer-assessments']">
+    <div class="quick-access-content">
+      <h4 class="title">Peer Assessments</h4>
+      <h6 class="subtitle"><span class="badge badge-pill badge-danger">{{ assessmentNumber }} pending</span></h6>
+    </div>
+  </div>
+
+  <div class="quick-access-item green shadow-layer-3 shadow-hoverable">
+    <div class="quick-access-content">
+      <h4 class="title">Project Evaluations</h4>
+      <h6 class="subtitle"><span class="badge badge-pill badge-danger">{{ evaluationNumber }} pending</span></h6>
+    </div>
+  </div>
+
+  <div class="quick-access-item deep-blue shadow-layer-1 shadow-hoverable" [routerLink]="['/projects', 'enroll']">
+    <div class="quick-access-content">
+      <h4 class="title">Enroll</h4>
+      <h6 class="subtitle">Join a new project</h6>
+    </div>
+  </div>
+
+  <div class="quick-access-item deep-blue shadow-layer-1 shadow-hoverable" [routerLink]="['/logs']">
+    <div class="quick-access-content">
+      <h4 class="title">Logs</h4>
+      <h6 class="subtitle">Manage log entries for your projects</h6>
+    </div>
+  </div>
+</div>

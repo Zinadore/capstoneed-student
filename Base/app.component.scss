@@ -1,21 +1,15 @@
 @import "../../style/global-variables";
-@import "~bootstrap/scss/bootstrap";
 
-//:host /deep/ .breadcrumb {
-//  background-color: white;
-//  .breadcrumb-item {
-//    color: #0275d8;
-//
-//    &.active {
-//      color: #636c72;
-//    }
-//  }
-//}
 
 
 #wrapper {
   display: flex;
-  height: 100%;
+  min-height: 100vh;
+
+  .fixed-wrapper  {
+    position: fixed;
+    width: 100%;
+  }
 
   #left-sidebar-wrapper {
     width: 250px;
@@ -26,6 +20,9 @@
     &.open {
       max-width: 100%;
       opacity: 1;
+      position: fixed;
+      top: 0;
+      left: 0;
     }
 
     .sidebar-header {
@@ -57,6 +54,14 @@
   #page-content-wrapper {
     background-color: #EEEEEE;
     flex: 1;
+
+    &.left-open {
+      margin-left: 250px;
+    }
+
+    &.right-open {
+      margin-right: 250px;
+    }
   }
 
   #right-sidebar-wrapper {
@@ -71,6 +76,9 @@
     &.open {
       max-width: 100%;
       opacity: 1;
+      position: fixed;
+      top: 0;
+      right: 0;
     }
 
     .sidebar-header {

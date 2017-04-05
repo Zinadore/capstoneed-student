@@ -1,14 +1,14 @@
-import { Component, Output, EventEmitter, HostBinding, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, HostBinding, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'ced-header',
   templateUrl: 'header.component.html',
   styleUrls: ['header.component.scss'],
   host: {
-    class: 'navbar navbar-fixed-top navbar-light'
+    class: 'navbar navbar-light'
   }
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
 
   @Output('burgerClicked') _burgerClicked: EventEmitter<boolean>;
   @Output('profileClicked') _profileClicked: EventEmitter<boolean>;

@@ -10,22 +10,27 @@
     {{ user.first_name + ' ' + user.last_name}}
   </div>
 
-  <div class="card teams-card">
-    <div class="card-header"><h6>My Active Teams</h6></div>
-    <ul class="list-group" *rxContext="let list on projects">
-      <li *ngFor="let project of list" class="list-group-item">
-        <a [routerLink]="['/projects', project.id]">
-          <span class="badge text-truncate" [style.background-color]="project.color">{{ project.team_name }}</span>
-        </a>
-      </li>
-    </ul>
+  <div class="level-class">
+    <span class="badge badge-default">Level 7: Specialist</span>
   </div>
 
+  <ngb-progressbar class="level-bar" [value]="30">Level 8</ngb-progressbar>
+  <span class="progress-help">Next level in 500 exp</span>
 
-  <div class="spacer"></div>
+
+  <!--<div class="card teams-card">-->
+    <!--<div class="card-header"><h6>My Active Teams</h6></div>-->
+    <!--<ul class="list-group" *rxContext="let list on projects">-->
+      <!--<li *ngFor="let project of list" class="list-group-item">-->
+        <!--<a [routerLink]="['/projects', project.id]">-->
+          <!--<span class="badge text-truncate" [style.background-color]="project.color">{{ project.team_name }}</span>-->
+        <!--</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
 
   <div class="btn-group-vertical action-buttons">
-    <button class="btn btn-default">My Profile</button>
+    <!--<button class="btn btn-default">My Profile</button>-->
     <button class="btn btn-default" (click)="onLogout()">Log Out</button>
   </div>
 </ng-template>

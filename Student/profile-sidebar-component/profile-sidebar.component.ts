@@ -16,12 +16,12 @@ import { AuthenticationService } from '../../../shared/Services/authentication.s
 export class ProfileSidebarComponent extends ComponentBase implements OnInit {
 
   private user: Observable<User>;
-  private projects: Observable<Project[]>;
+  // private projects: Observable<Project[]>;
 
   constructor(store: Store<IAppState>, private authService: AuthenticationService) {
     super();
     this.user = store.select(state => state.user);
-    this.projects = store.select(state => state.projects)
+    // this.projects = store.select(state => state.projects)
   }
 
   ngOnInit() {

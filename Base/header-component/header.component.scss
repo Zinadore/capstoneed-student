@@ -1,10 +1,12 @@
 @import "../../../style/global-variables";
+//@import "../../../style/student-common";
 
 :host {
   background-color: white;
   height: $navbar-height;
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 25px;
+
   .nav-container {
     display: flex;
 
