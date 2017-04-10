@@ -1,0 +1,26 @@
+@import "../../../style/student-app";
+:host {
+  display: flex;
+
+
+
+  @include media-breakpoint-up(lg) {
+    justify-content: center;
+  }
+
+  form {
+    width: 100%;
+    background-color: white;
+    padding: 1em;
+
+    @include media-breakpoint-up(lg) {
+      max-width: 70%;
+    }
+
+    @include media-breakpoint-down(md) {
+      align-self: stretch;
+    }
+  }
+
+
+}

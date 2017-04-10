@@ -1,14 +1,23 @@
 @import "../../style/global-variables";
+@import "../../style/student-app";
 
-
+@mixin sidebar-header {
+  font-size: 18px;
+  height: $navbar-height;
+  background-color: white;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 #wrapper {
   display: flex;
-  min-height: 100vh;
 
-  .fixed-wrapper  {
-    position: fixed;
-    width: 100%;
+  &.open {
+    @include media-breakpoint-down(md) {
+      overflow-x: hidden;
+    }
   }
 
   #left-sidebar-wrapper {
@@ -20,19 +29,13 @@
     &.open {
       max-width: 100%;
       opacity: 1;
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
     }
 
     .sidebar-header {
-      font-size: 18px;
-      height: $navbar-height;
-      background-color: white;
-      border-bottom: 1px solid #e6e6e6;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      @include sidebar-header;
 
       a {
         color: #000000;
@@ -54,14 +57,34 @@
   #page-content-wrapper {
     background-color: #EEEEEE;
     flex: 1;
+    min-height: 100vh;
+    padding-bottom: 2em;
+
+    transition: transform 0.3s, opacity 0.15s,  ease-in-out;
+
 
     &.left-open {
-      margin-left: 250px;
+
+      @include media-breakpoint-up(lg) {
+        margin-left: 250px;
+      }
+
+      @include media-breakpoint-down(md) {
+        transform: translate(250px, 0);
+      }
+
     }
 
     &.right-open {
-      margin-right: 250px;
+      @include media-breakpoint-up(lg) {
+        margin-right: 250px;
+      }
+
+      @include media-breakpoint-down(md) {
+        transform: translate(-250px, 0);
+      }
     }
+
   }
 
   #right-sidebar-wrapper {
@@ -69,14 +92,15 @@
     max-width: 0;
     opacity: 0;
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
+    display: block;
+    //flex-direction: column;
+
 
     transition: max-width 0.3s, opacity 0.15s,  ease-in-out;
     &.open {
       max-width: 100%;
       opacity: 1;
-      position: fixed;
+      position: absolute;
       top: 0;
       right: 0;
     }

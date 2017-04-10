@@ -6,7 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'ced-login',
-  templateUrl: 'login.component.html'
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.scss']
 })
 export class LoginComponent extends ComponentBase implements OnInit{
   private loginForm: FormGroup;

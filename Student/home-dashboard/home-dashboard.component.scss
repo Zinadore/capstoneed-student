@@ -25,21 +25,19 @@
       padding-left: 0.5em;
 
       @include media-breakpoint-down(md) {
-        &:not(:first-child), &:not(:last-child){
+        &:not(:first-child) {
           margin-top: 0.5em;
+        }
+      }
+
+      @include media-breakpoint-up(lg) {
+        &:not(:first-child), &:not(:last-child){
+          margin-right: 0.5em;
         }
 
         &:last-child {
-          margin-top: 0;
+          margin-right: 0;
         }
-      }
-
-      &:not(:first-child), &:not(:last-child){
-        margin-right: 0.5em;
-      }
-
-      &:last-child {
-        margin-right: 0;
       }
 
       @each $cname, $color in $student-colors {

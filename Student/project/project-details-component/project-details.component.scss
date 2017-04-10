@@ -17,6 +17,11 @@
 
       &.show {
         display: flex;
+
+        @include media-breakpoint-down(md){
+          flex-direction: column;
+        }
+
       }
     }
 
@@ -78,6 +83,10 @@
     justify-content: space-around;
     margin-top: 1.5em;
 
+    @include media-breakpoint-down(md) {
+      flex-wrap: wrap;
+    }
+
     .quick-access-item {
       flex: 1;
       flex-basis: 100%;
@@ -87,23 +96,25 @@
       cursor: hand;
       padding-left: 0.5em;
 
-      @include media-breakpoint-down(sm) {
-        &:not(:first-child), &:not(:last-child) {
+      @include media-breakpoint-down(md) {
+        margin-right: 0;
+
+        &:not(:first-child) {
           margin-top: 0.5em;
+        }
+      }
+
+      @include media-breakpoint-up(lg) {
+        &:not(:first-child), &:not(:last-child) {
+          margin-right: 0.5em;
         }
 
         &:last-child {
-          margin-top: 0;
+          margin-right: 0;
         }
       }
 
-      &:not(:first-child), &:not(:last-child) {
-        margin-right: 0.5em;
-      }
 
-      &:last-child {
-        margin-right: 0;
-      }
 
       @each $cname, $color in $student-colors {
         &.#{$cname} {

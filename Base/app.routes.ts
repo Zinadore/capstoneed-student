@@ -9,10 +9,14 @@ import { PeerAssessmentComponent } from '../Student/assessment/peer-assessment-c
 import { ProjectDetailsComponent } from '../Student/project/project-details-component/project-details.component';
 import { ProjectListComponent } from '../Student/project/project-list-component/project-list.component';
 import { LogsComponent } from '../Student/logs/logs-component/logs.component';
+import { RegisterComponent } from './register-component/register.component';
+import { RegisterSuccessComponent } from './register-success-component/register-success.component';
 
 export const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', pathMatch: 'full', component: RegisterComponent },
+  { path: 'register_success', pathMatch: 'full', component: RegisterSuccessComponent },
   { path: '', canActivate: [IsAuthenticatedGuard], children: [
     { path: 'units', children: [
       { path: '', pathMatch: 'full', component: UnitListComponent }

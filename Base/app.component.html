@@ -1,6 +1,6 @@
 <div toastContainer></div>
 
-<div id="wrapper">
+<div id="wrapper" [ngClass]="{ 'open': _leftOpen || _rightOpen }">
   <div id="left-sidebar-wrapper" [class.open]="_leftOpen">
     <div class="sidebar-header">
       <a [routerLink]="['/home']">CapstoneED</a>

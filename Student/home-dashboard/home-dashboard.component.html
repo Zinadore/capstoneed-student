@@ -2,14 +2,14 @@
   <div class="quick-access-item blue shadow-layer-3 shadow-hoverable" [routerLink]="['/peer-assessments']">
     <div class="quick-access-content">
       <h4 class="title">Peer Assessments</h4>
-      <h6 class="subtitle"><span class="badge badge-pill badge-danger">{{ assessmentNumber }} pending</span></h6>
+      <h6 class="subtitle"><span class="badge badge-pill" [ngClass]="{ 'badge-danger': assessmentNumber != 0, 'badge-default': assessmentNumber == 0 }">{{ assessmentNumber }} pending</span></h6>
     </div>
   </div>
 
   <div class="quick-access-item green shadow-layer-3 shadow-hoverable">
     <div class="quick-access-content">
       <h4 class="title">Project Evaluations</h4>
-      <h6 class="subtitle"><span class="badge badge-pill badge-danger">{{ evaluationNumber }} pending</span></h6>
+      <h6 class="subtitle"><span class="badge badge-pill" [ngClass]="{ 'badge-danger': evaluationNumber != 0, 'badge-default': evaluationNumber == 0 }">{{ evaluationNumber }} pending</span></h6>
     </div>
   </div>
 

@@ -36,7 +36,7 @@ export class ProjectListItemComponent extends ComponentBase implements OnChanges
 
   getIterationsCompleted(): string {
     let completed = ProjectHelpers.getNumberOfIterationsCompleted(this.assignment.iterations, this.now);
-    return `${completed}/${this.assignment.iterations.length}`;
+    return `${completed}/${this.assignment.iterations.length || 0}`;
   }
 
   private isIterationCompleted(iteration: Iteration): boolean {

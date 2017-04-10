@@ -1,0 +1,19 @@
+@import '../../../style/student-app';
+:host {
+  display: flex;
+
+  @include media-breakpoint-up(lg){
+    justify-content: center;
+  }
+
+  .jumbotron {
+    width: 100%;
+    background-color: white;
+
+    @include media-breakpoint-up(lg) {
+      width: 70%;
+      max-width: 70%;
+    }
+  }
+
+}

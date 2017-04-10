@@ -16,11 +16,14 @@ import { CedStoreModule } from '../../shared/Store/cedStore.module';
 import { GuardsModule } from '../../shared/Guards/guards.module';
 import { StudentModule } from '../Student/student.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterComponent } from './register-component/register.component';
+import { ValidatorsModule } from "ng2-validators";
+import { RegisterSuccessComponent } from './register-success-component/register-success.component';
 
-const ToastrGlobalConf: ToastrConfig = {
+const ToastrGlobalConf: ToastrConfig = <ToastrConfig>{
   maxOpened: 0, // max toasts opened. Toasts will be queued
   autoDismiss: false, // dismiss current toast when max is reached
-  iconClasses : { // classes used on toastr service methods
+  iconClasses: { // classes used on toastr service methods
     error: 'toast-error',
     info: 'toast-info',
     success: 'toast-success',
@@ -57,12 +60,15 @@ const ToastrGlobalConf: ToastrConfig = {
     ServicesModule.forRoot(),
     SharedDirectivesModule,
     GuardsModule,
-    StudentModule
+    StudentModule,
+    ValidatorsModule
   ],
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    RegisterSuccessComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
