@@ -8,6 +8,11 @@
   </span>
 
   <span class="header-icon" (click)="onProfileClicked()">
-    <i class="fa fa-address-card"></i>
+    <i class="fa fa-address-card" *ngIf="!user"></i>
+    <img class="user-avatar"
+         [src]="user.avatar_url"
+         alt="{{ user.first_name + ' ' + user.last_name }}'s avatar"
+         *ngIf="user"
+    >
   </span>
 </div>

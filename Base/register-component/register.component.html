@@ -40,6 +40,7 @@
         <input type="password" class="form-control" id="password" formControlName="password">
         <span *ngIf="registrationForm.get('passwords.password').hasError('required') && registrationForm.get('passwords.password').touched" class="text-danger">*Password is required</span>
         <span *ngIf="registrationForm.get('passwords.password').hasError('minlength') && registrationForm.get('passwords.password').dirty" class="text-danger">*The password must be at least 8 characters long</span>
+        <span *ngIf="registrationForm.get('passwords.password').hasError('noWhitespaceRequired') && registrationForm.get('passwords.password').dirty" class="text-danger">*The password cannot contain whitespaces</span>
       </div>
       <div class="form-group">
         <label for="passwordConfirmation">Password Confirmation</label>

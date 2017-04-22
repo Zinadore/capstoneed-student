@@ -1,0 +1,45 @@
+@import "../../../../../style/student-app";
+@mixin rank-position($color){
+  $actualColor: map-get($categoryBackgrounds, $color);
+  background: linear-gradient(to right, white 10%, $actualColor 100%);
+  color: contrast-color($actualColor);
+}
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .list-group {
+    width: 70%;
+    margin: 0 auto;
+
+    .list-group-item {
+      &:first-child {
+        border: 2px solid gold;
+      }
+
+      &:nth-child(2) {
+        border: 2px solid silver;
+      }
+
+      &:nth-child(3) {
+        border: 2px solid saddlebrown;
+      }
+    }
+  }
+
+  .student-draggable {
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+
+    .student-avatar {
+      max-width: 2.5em;
+      height: auto;
+    }
+
+    span {
+      margin-left: 0.8rem;
+    }
+  }
+}

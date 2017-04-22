@@ -17,8 +17,25 @@ import { IterationHelpers } from '../../../../shared/Helpers/iteration.helpers';
   }
 })
 export class ProjectListItemComponent extends ComponentBase implements OnChanges {
-  @Input() project: Project;
-  @Input() assignment: Assignment;
+  private _project: Project;
+  @Input() set project(value) {
+    console.log(value);
+    this._project = value;
+  }
+
+  get project() {
+    return this._project;
+  }
+
+  private _assignment: Assignment;
+  @Input() set assignment(value) {
+    console.log(value);
+    this._assignment = value;
+  }
+
+  get assignment() {
+    return this._assignment;
+  }
   private trim_length: number = 15;
   private percentage_completed: number = 0;
   private now: any = moment().toDate();
@@ -39,11 +56,11 @@ export class ProjectListItemComponent extends ComponentBase implements OnChanges
     return `${completed}/${this.assignment.iterations.length || 0}`;
   }
 
-  private isIterationCompleted(iteration: Iteration): boolean {
-    if(!iteration)
-      return false;
-    return new Date(iteration.deadline) <= this.now;
-  }
+  // private isIterationCompleted(iteration: Iteration): boolean {
+  //   // if(!iteration)
+  //   //   return false;
+  //   return new Date(iteration.deadline) <= this.now;
+  // }
 
   iteration_progress(iteration: Iteration): number {
     return IterationHelpers.getProgressPercent(iteration, this.now);

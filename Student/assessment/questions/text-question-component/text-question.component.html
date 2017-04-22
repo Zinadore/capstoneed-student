@@ -3,7 +3,8 @@
   <div formArrayName="texts">
     <div [formGroupName]="i" class="form-group" *ngFor="let student of students; let i = index">
       <label for="{{'answer' + student.id }}">{{ student.nickname }}</label>
-      <input type="text" class="form-control" id="{{'answer' + student.id }}" formControlName="answerText">
+      <textarea rows="6" type="text" class="form-control" id="{{'answer' + student.id }}" formControlName="answerText">
+      </textarea>
     </div>
   </div>
 </form>

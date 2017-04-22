@@ -28,6 +28,11 @@ import { RangeQuestionComponent } from './assessment/questions/range-question-co
 import { UnknownQuestionComponent } from './assessment/questions/unknown-question.component';
 import { TextQuestionComponent } from './assessment/questions/text-question-component/text-question.component';
 import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
+import { RankQuestionComponent } from './assessment/questions/rank-question-component/rank-question.component';
+import { ProfileDetailsComponent } from './profile-details-component/profile-details.component';
+import { EditProfileComponent } from './edit-profile-component/edit-profile.component';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { PeerAssessmentSummaryComponent } from './assessment/peer-assessment-summary-component/peer-assessment-summary.component';
 
 
 @NgModule({
@@ -39,7 +44,8 @@ import { HomeDashboardComponent } from './home-dashboard/home-dashboard.componen
     SharedDirectivesModule,
     NgxDatatableModule,
     DragulaModule,
-    NgxMyDatePickerModule
+    NgxMyDatePickerModule,
+    NgxErrorsModule
   ],
   declarations: [
     SidenavComponent,
@@ -51,6 +57,7 @@ import { HomeDashboardComponent } from './home-dashboard/home-dashboard.componen
     ProjectEnrollmentComponent,
     PeerAssessmentComponent,
     PeerAssessmentQuestionComponent,
+    PeerAssessmentSummaryComponent,
     ProfileSidebarComponent,
     ProjectDetailsComponent,
     ProjectListComponent,
@@ -62,12 +69,16 @@ import { HomeDashboardComponent } from './home-dashboard/home-dashboard.componen
     RangeQuestionComponent,
     UnknownQuestionComponent,
     TextQuestionComponent,
-    HomeDashboardComponent
+    RankQuestionComponent,
+    HomeDashboardComponent,
+    ProfileDetailsComponent,
+    EditProfileComponent,
   ],
   entryComponents: [
     RangeQuestionComponent,
     UnknownQuestionComponent,
-    TextQuestionComponent
+    TextQuestionComponent,
+    RankQuestionComponent
   ],
   providers: [],
   exports: [

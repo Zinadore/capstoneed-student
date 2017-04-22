@@ -1,5 +1,5 @@
 @import "../../../style/global-variables";
-//@import "../../../style/student-common";
+@import "../../../style/student-app";
 
 :host {
   background-color: white;
@@ -12,6 +12,13 @@
 
     .header-icon {
       font-size: 1.5rem;
+      .user-avatar {
+        @extend .shadow-layer-3;
+        @extend .shadow-hoverable;
+        max-width: 3em;
+        border-radius: 50%;
+        border: 0.3em solid white;
+      }
     }
   }
 

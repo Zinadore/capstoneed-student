@@ -6,7 +6,8 @@ import { Question } from '../../../../../shared/Store/Models/question';
 @Component({
   selector: 'ced-range-question',
   templateUrl: 'range-question.component.html',
-  styleUrls: ['range-question.component.scss']
+  styleUrls: ['range-question.component.scss'],
+  providers: [DragulaService]
 })
 export class RangeQuestionComponent extends ComponentBase implements OnInit {
 
@@ -53,5 +54,8 @@ export class RangeQuestionComponent extends ComponentBase implements OnInit {
     console.log(this.isHelpCollapsed);
   }
 
+  destroy() {
+    this.dragulaService.destroy('students');
+  }
 
 }

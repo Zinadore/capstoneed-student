@@ -1,0 +1,51 @@
+<ngb-tabset>
+  <ngb-tab *ngFor="let student of PeerAssessmentSummaryComponent_Project.students">
+    <template ngbTabTitle>{{ student.nickname }}</template>
+    <template ngbTabContent>
+      <div class="list-group">
+        <div class="list-group-item summary-item" *ngFor="let q of getNonTextQuestions()">
+          <span class="question-text">{{ q.text }}</span>
+          <ng-container *ngIf="q.question_type.question_type === 'rank'" [ngTemplateOutlet]="rankAnswer" [ngTemplateOutletContext]="{ answer: getQuestionAnswer(q.question_id, student.id) }"></ng-container>
+          <ng-container *ngIf="q.question_type.question_type === 'number'" [ngTemplateOutlet]="rangeAnswer" [ngTemplateOutletContext]="{ answer: getQuestionAnswer(q.question_id, student.id) }"></ng-container>
+
+        </div>
+      </div>
+    </template>
+
+  </ngb-tab>
+</ngb-tabset>
+
+<div class="comment-questions-container">
+  <h4>Comments</h4>
+  <hr>
+  <div class="question" *ngFor="let q of getTextQuestions()">
+    <span>For the question</span>
+    <p class="question-text lead">{{ q.text }}</p>
+    <p class="text-muted">You said...</p>
+    <div class="comments-container">
+      <ng-container *ngFor="let student of PeerAssessmentSummaryComponent_Project.students" [ngTemplateOutlet]="textAnswer" [ngTemplateOutletContext]="{ answer: getQuestionAnswer(q.question_id, student.id), student: student }"></ng-container>
+    </div>
+
+  </div>
+</div>
+
+<ng-template let-answer="answer" #rankAnswer>
+  <div class="question-answer__rank" [ngClass]="{ 'rank1': answer == 5, 'rank2': answer == 4, 'rank3': answer == 3 }">{{answer}}</div>
+</ng-template>
+
+<ng-template let-answer="answer" #rangeAnswer>
+  <div class="question-answer__range" [ngClass]="{ 'category1': answer == 1, 'category2': answer == 2, 'category3': answer == 3, 'category4': answer == 4, 'category5': answer == 5 }">{{answer}}</div>
+</ng-template>
+
+<ng-template let-answer="answer" let-student="student" #textAnswer>
+  <div class="question-answer__text" *ngIf="answer">
+    <img [src]="student.avatar_url" alt="{{student.first + ' ' + student.last_name }}'s avatar" class="question-answer__text__avatar">
+    <div>
+      <span class="question-answer__text__nickname">{{ student.nickname }}</span>
+      <div class="question-answer__text__comment">
+        {{answer}}
+      </div>
+    </div>
+
+  </div>
+</ng-template>

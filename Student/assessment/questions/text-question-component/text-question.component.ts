@@ -51,7 +51,7 @@ export class TextQuestionComponent extends ComponentBase implements OnInit {
 
   constructor(private fb: FormBuilder) {
     super();
-    this._isFormValid = new BehaviorSubject<boolean>(false);
+    this._isFormValid = new BehaviorSubject<boolean>(true);
     this.students = [];
   }
 
@@ -80,7 +80,7 @@ export class TextQuestionComponent extends ComponentBase implements OnInit {
 
     comp.push(
       this.fb.group({
-        answerText: ['', Validators.required]
+        answerText: ''
       })
     )
   }

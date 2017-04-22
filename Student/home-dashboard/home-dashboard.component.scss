@@ -24,6 +24,11 @@
       cursor: hand;
       padding-left: 0.5em;
 
+      &:focus {
+        border: none;
+        outline: none;
+      }
+
       @include media-breakpoint-down(md) {
         &:not(:first-child) {
           margin-top: 0.5em;
@@ -54,6 +59,8 @@
         .title {
           font-size: 1.5em;
           margin-bottom: 0.8rem;
+
+
         }
 
         .subtitle {

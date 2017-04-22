@@ -12,20 +12,27 @@ import { Assignment } from '../../../../shared/Store/Models/assignment';
   styleUrls: ['project-list.component.scss']
 })
 export class ProjectListComponent extends ComponentBase implements OnInit {
-  private project$: Observable<Project[]>;
+  private projects:Project[] = [];
+  private assignments: Assignment[] = [];
 
-  constructor(private store: Store<IAppState>) {
+  constructor(store: Store<IAppState>) {
     super();
 
-    this.project$ = store.select(state => state.projects);
+    this.disposeOnDestroy(store.select(state => state.projects)
+      .subscribe(projects => this.projects = projects)
+    );
+    this.disposeOnDestroy(store.select(state => state.assignments)
+      .subscribe(assignments => this.assignments = assignments)
+    );
   }
 
   ngOnInit() {
   }
 
 
-  private getAssignment(assignment_id: number):Observable<Assignment> {
-    return this.store.select(state => state.assignments).map(assignments=> assignments.find(a => a.id == assignment_id));
+  private getAssignment(assignment_id: number): Assignment {
+    let result = this.assignments.find(a => a.id == assignment_id);
+    return result;
   }
 
 }

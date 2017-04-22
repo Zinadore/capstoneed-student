@@ -6,7 +6,7 @@
 
 <ng-template #validUser let-user="user">
   <img class="img-fluid mx-auto d-block user-image" [src]="user.avatar_url" />
-  <div class="username">
+  <div class="username" [routerLink]="['/profile', 'edit']">
     {{ user.first_name + ' ' + user.last_name}}
   </div>
 
@@ -32,6 +32,7 @@
   <div class="btn-group-vertical action-buttons">
     <!--<button class="btn btn-default">My Profile</button>-->
     <button class="btn btn-default" (click)="onLogout()">Log Out</button>
+    <button class="btn btn-primary" [routerLink]="['/profile', 'edit']">Edit Profile</button>
   </div>
 </ng-template>
 

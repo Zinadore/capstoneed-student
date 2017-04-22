@@ -1,3 +1,4 @@
+///<reference path="../../../../../shared/Store/Models/question-type.ts"/>
 import {
   Component,
   OnInit,
@@ -13,15 +14,19 @@ import { Question } from '../../../../../shared/Store/Models/question';
 import { Project } from '../../../../../shared/Store/Models/project';
 import { FormWizardStepComponent } from '../../../../../shared/Directives/formWizardStep - component/formWizardStep.component';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { QUESTION_TYPE_TEXT, QUESTION_TYPE_NUMBER } from '../../../../../shared/Store/Models/question-type';
+import {
+  QUESTION_TYPE_TEXT, QUESTION_TYPE_NUMBER,
+  QUESTION_TYPE_RANK
+} from '../../../../../shared/Store/Models/question-type';
 import { UnknownQuestionComponent } from '../unknown-question.component';
 import { RangeQuestionComponent } from '../range-question-component/range-question.component';
 import { TextQuestionComponent } from '../text-question-component/text-question.component';
+import { RankQuestionComponent } from '../rank-question-component/rank-question.component';
 
 @Component({
   selector: 'ced-pa-question',
   templateUrl: 'peer-assessment-question.component.html',
-  styleUrls: ['peer-assessment-question.component.scss'],
+  styleUrls: ['peer-assessment-question.component.scss']
 })
 export class PeerAssessmentQuestionComponent extends ComponentBase implements OnInit, AfterViewInit, OnChanges {
 
@@ -96,6 +101,22 @@ export class PeerAssessmentQuestionComponent extends ComponentBase implements On
 
         this.step.registerOnNext(this.textStep_OnNext);
       } break;
+      case QUESTION_TYPE_RANK: {
+        let factory = this.resolver.resolveComponentFactory(RankQuestionComponent);
+        this.questionComponent = this.vcRef.createComponent(factory);
+
+        this.questionComponent.instance.students_input = this.project? this.project.students : [];
+        this.questionComponent.instance.question_input = this.question;
+
+        // this.disposeOnDestroy(this.questionComponent.instance.isFormValid.subscribe(value => {
+        //   this.canGoNextSubject.next(value);
+        // }));
+
+        this.canGoNextSubject.next(true);
+        this.step.registerOnNext(this.rankStep_OnNext);
+
+
+      }break;
 
       default: {
         let factory = this.resolver.resolveComponentFactory(UnknownQuestionComponent);
@@ -131,6 +152,19 @@ export class PeerAssessmentQuestionComponent extends ComponentBase implements On
     }
 
     this.answersOutput.emit(result);
-  }
+  };
+
+  public rankStep_OnNext: Function = () => {
+    let ranked_students = this.questionComponent.instance.ranked_students;
+    let result = [];
+
+    for(let index = 0; index < ranked_students.length; index++) {
+      let curr = ranked_students[index];
+      // console.log(curr);
+      result.push({ student_id: curr.id, answer: (ranked_students.length - index), question_id: this.question.question_id });
+    }
+    // console.log(result);
+    this.answersOutput.emit(result);
+  };
 
 }

@@ -11,6 +11,8 @@ import { ProjectListComponent } from '../Student/project/project-list-component/
 import { LogsComponent } from '../Student/logs/logs-component/logs.component';
 import { RegisterComponent } from './register-component/register.component';
 import { RegisterSuccessComponent } from './register-success-component/register-success.component';
+import { ProfileDetailsComponent } from '../Student/profile-details-component/profile-details.component';
+import { EditProfileComponent } from '../Student/edit-profile-component/edit-profile.component';
 
 export const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -33,6 +35,9 @@ export const APP_ROUTES: Routes = [
       { path: '', pathMatch: 'full', component: PaFeedComponent}
     ]},
     { path: 'logs', component: LogsComponent },
+    { path: 'profile', children: [
+      { path: 'edit', component: EditProfileComponent }
+    ] },
     { path: '', pathMatch: 'full', redirectTo: 'home' }
   ]}
 ];

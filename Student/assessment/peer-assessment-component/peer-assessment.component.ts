@@ -9,10 +9,13 @@ import { Project } from '../../../../shared/Store/Models/project';
 import { isNullOrUndefined } from 'util';
 import { PeerAssessmentService } from '../../../../shared/Services/peer-assessment.service';
 import { PeerAssessment } from '../../../../shared/Store/Models/peer-assessment';
+import { Question } from '../../../../shared/Store/Models/question';
+import { QUESTION_TYPE_TEXT } from '../../../../shared/Store/Models/question-type';
 
 @Component({
   selector: 'ced-peer-assessment',
-  templateUrl: 'peer-assessment.component.html'
+  templateUrl: 'peer-assessment.component.html',
+  styleUrls: ['peer-assessment.component.scss']
 })
 export class PeerAssessmentComponent extends ComponentBase implements OnInit {
   private assessment: Observable<PeerAssessmentForm>;
@@ -47,8 +50,6 @@ export class PeerAssessmentComponent extends ComponentBase implements OnInit {
   }
 
   private onReceivedAnswer(event) {
-
-    console.log(event);
     // These are the objects that the child element emitted
     for(let ansObj of event){
 
@@ -70,7 +71,14 @@ export class PeerAssessmentComponent extends ComponentBase implements OnInit {
       let remaining = ass.answers.filter(a => a.question_id != ansObj.question_id);
 
       // Create the new answers array
-      ass.answers = [...remaining, {question_id: ansObj.question_id, answer: ansObj.answer}]
+      // if(ansObj.answer !== "") {
+      //   ass.answers = [...remaining, {question_id: ansObj.question_id, answer: ansObj.answer}]
+      // }
+      // else {
+      //   // Gotta make sure empty strings are converted to null, so they can be parsed to json
+      //   ass.answers = [...remaining, {question_id: ansObj.question_id, answer: null}]
+      // }
+        ass.answers = [...remaining, {question_id: ansObj.question_id, answer: ansObj.answer}]
 
     }
 
@@ -78,6 +86,11 @@ export class PeerAssessmentComponent extends ComponentBase implements OnInit {
 
   public wizard_OnFinish = () => {
     console.log(this.peerAssessments);
-  }
+    this.paService.createPeerAssessments(this.peerAssessments);
+  };
+
+  public summaryStep_CanGoNext = (): Observable<boolean> => {
+    return Observable.of(true);
+  };
 
 }

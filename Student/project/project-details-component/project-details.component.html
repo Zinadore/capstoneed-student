@@ -1,5 +1,5 @@
-<ng-template [ngTemplateOutlet]="validProject" *ngIf="project"></ng-template>
-<ng-template [ngTemplateOutlet]="invalidProject" *ngIf="!project"></ng-template>
+<ng-template [ngTemplateOutlet]="validProject" *ngIf="project && assignment"></ng-template>
+<ng-template [ngTemplateOutlet]="invalidProject" *ngIf="!project || !assignment"></ng-template>
 
 
 
@@ -104,6 +104,6 @@
 
 <ng-template #invalidProject>
   <div>
-    I could not find the project you asked for
+    Loading...
   </div>
 </ng-template>

@@ -1,0 +1,19 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h4>{{question_input.text}}</h4>
+    <hr class="my-4">
+    <button class="btn btn-primary btn-sm" (click)="toggleHelp()">Need help?</button>
+    <p class="lead" [ngbCollapse]="isHelpCollapsed">
+      Re-arrange your teammates below, to rank them from best to worst fit for the question above.
+    </p>
+  </div>
+</div>
+
+<div class="list-group" [dragula]="'rank-bag'" [dragulaModel]="students">
+  <div class="list-group-item" *ngFor="let student of students">
+    <div class="student-draggable">
+      <img class="student-avatar" [src]="student.avatar_url" alt="{{ student.nickname }} avatar">
+      <span>{{student.nickname}}</span>
+    </div>
+  </div>
+</div>

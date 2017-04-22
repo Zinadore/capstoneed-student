@@ -35,7 +35,7 @@ export class RegisterComponent extends ComponentBase implements OnInit {
       lastName: ['', Validators.compose([Validators.required, UniversalValidators.noEmptyString])],
       email: ['', Validators.compose([Validators.required, EmailValidators.normal])],
       passwords: this.fb.group({
-        password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+        password: ['', Validators.compose([Validators.required, UniversalValidators.noWhitespace, Validators.minLength(8)])],
         passwordConfirmation: ['', Validators.compose([Validators.required])],
       }),
       accountType: ['', Validators.compose([Validators.required, CedValidators.hasOneValueOf(['Student', 'Lecturer'])])],
