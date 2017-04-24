@@ -68,12 +68,12 @@
           <div class="col-md-3" id="points">
             <h5>Points Contribution</h5>
             <dl class="row">
-              <dt class="col-6"><span class="text-success">My Contribution</span></dt>
-              <dd class="col-6"><span class="text-success">50 points</span></dd>
+              <dt class="col-6"><span [ngClass]="{ 'text-success': (project.points.personal >= project.points.average), 'text-danger': (project.points.personal <= project.points.average) }">My Contribution</span></dt>
+              <dd class="col-6"><span [ngClass]="{ 'text-success': (project.points.personal >= project.points.average), 'text-danger': (project.points.personal <= project.points.average) }">{{ project.points.personal }}</span></dd>
               <dt class="col-6">Team Total</dt>
-              <dd class="col-6">500 points</dd>
+              <dd class="col-6">{{ project.points.total }}</dd>
               <dt class="col-6">Team Average</dt>
-              <dd class="col-6">30 points</dd>
+              <dd class="col-6">{{ project.points.average }}</dd>
             </dl>
           </div>
 

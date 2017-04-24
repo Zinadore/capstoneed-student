@@ -51,7 +51,6 @@ export class RangeQuestionComponent extends ComponentBase implements OnInit {
 
   toggleHelp(): void {
     this.isHelpCollapsed = !this.isHelpCollapsed;
-    console.log(this.isHelpCollapsed);
   }
 
   destroy() {

@@ -9,8 +9,6 @@ import { Project } from '../../../../shared/Store/Models/project';
 import { isNullOrUndefined } from 'util';
 import { PeerAssessmentService } from '../../../../shared/Services/peer-assessment.service';
 import { PeerAssessment } from '../../../../shared/Store/Models/peer-assessment';
-import { Question } from '../../../../shared/Store/Models/question';
-import { QUESTION_TYPE_TEXT } from '../../../../shared/Store/Models/question-type';
 
 @Component({
   selector: 'ced-peer-assessment',
@@ -26,14 +24,20 @@ export class PeerAssessmentComponent extends ComponentBase implements OnInit {
   constructor(private store: Store<IAppState>, route: ActivatedRoute, private paService: PeerAssessmentService) {
     super();
 
-    this.assessment = route.params
+    let idObservable = route.params
       .filter(params => params['id'])
-      .map(params => params['id'])
+      .map(params => params['id']);
+
+    this.assessment = idObservable
       .switchMap(id => this.store.select((state: IAppState)=> state.pa_forms)
         .map(forms => forms.find(f => f.id == id))
       )
       .filter((form: PeerAssessmentForm) => !isNullOrUndefined(form))
       .do(form => this.form_id = form.id);
+
+    this.disposeOnDestroy(idObservable.distinctUntilChanged().subscribe(id => {
+      this.paService.getForm(id)
+    }));
 
     this.project = this.assessment
       .filter(a => !isNullOrUndefined(a))
@@ -85,7 +89,6 @@ export class PeerAssessmentComponent extends ComponentBase implements OnInit {
   }
 
   public wizard_OnFinish = () => {
-    console.log(this.peerAssessments);
     this.paService.createPeerAssessments(this.peerAssessments);
   };
 
