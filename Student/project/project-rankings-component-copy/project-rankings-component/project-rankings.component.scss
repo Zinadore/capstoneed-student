@@ -1,0 +1,150 @@
+@import '~bootstrap/scss/bootstrap';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: white;
+  padding: 2em;
+
+  .teams-presenter {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .team-container {
+      width: 20%;
+      height: auto;
+      display: block;
+      //background: linear-gradient(to right, white, red 45%, white 90%);
+      border: 1px solid #e3e3e3;
+      transform: translateY(-100%);
+      opacity: 0;
+      perspective: 300px;
+
+      animation-name: dropFromTop;
+      animation-duration: 600ms;
+      animation-timing-function: ease-in;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+
+      &.own {
+        background: linear-gradient(to right, white, white 45%, #4286f4 50%, white 55%)!important;
+      }
+
+      &.rank2 {
+        perspective-origin: right;
+      }
+
+      &.rank3 {
+        perspective-origin: left;
+      }
+
+      // Normal stlyes
+      .team {
+        display: flex;
+        flex-direction: column;
+
+
+        .team-logo {
+
+          img {
+            max-width: 5em;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            border-style: solid;
+            border-width: 2px;
+          }
+        }
+
+        .team-stats {
+          display: flex;
+          flex-wrap: wrap;
+          span {
+            width: 50%;
+            white-space: nowrap;
+            color: white;
+            padding-left: 0.5em;
+            text-shadow:
+              -1px -1px 0 #000,
+              1px -1px 0 #000,
+              -1px 1px 0 #000,
+              1px 1px 0 #000;
+            @include media-breakpoint-down(md) {
+              padding-left: 0!important;
+              width: 100%!important;
+              white-space: normal;
+              text-align: center;
+              font-size: 0.7rem;
+            }
+
+            &.heading {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      // Animation styles
+      .team {
+        $rotation-degrees: 10deg;
+
+        margin-top: 8px;
+
+        &.rank1 {
+          margin-top: 0!important;
+        }
+
+        &.rank2 {
+          margin-top: 4px!important;
+          transform: rotateY(-$rotation-degrees);
+          //
+          //.team-logo {
+          //  transform: rotateY(-$rotation-degrees);
+          //}
+          //
+          //.team-stats {
+          //  transform: rotateY(-$rotation-degrees);
+          //}
+        }
+
+        &.rank3 {
+          margin-top: 4px!important;
+          transform: rotateY($rotation-degrees);
+          //.team-logo {
+          //  transform: rotateY($rotation-degrees);
+          //}
+          //
+          //.team-stats {
+          //  transform: rotateY($rotation-degrees);
+          //}
+        }
+      }
+
+    }
+
+    .empty {
+      width: 20%;
+    }
+
+  }
+}
+
+@keyframes dropFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  95% {
+    transform: translateY(15px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

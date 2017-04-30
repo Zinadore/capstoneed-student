@@ -13,6 +13,7 @@ import { RegisterComponent } from './register-component/register.component';
 import { RegisterSuccessComponent } from './register-success-component/register-success.component';
 import { ProfileDetailsComponent } from '../Student/profile-details-component/profile-details.component';
 import { EditProfileComponent } from '../Student/edit-profile-component/edit-profile.component';
+import { ProjectRankingsComponent } from '../Student/project/project-rankings-component/project-rankings.component';
 
 export const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -26,7 +27,8 @@ export const APP_ROUTES: Routes = [
     { path: 'projects', children: [
       { path: 'enroll', component: ProjectEnrollmentComponent},
       { path: ':id', children:[
-        { path: '', pathMatch: 'full', component: ProjectDetailsComponent }
+        { path: '', pathMatch: 'full', component: ProjectDetailsComponent },
+        { path: 'rankings', pathMatch: 'full', component: ProjectRankingsComponent }
       ]},
       { path: '', pathMatch: 'full', component: ProjectListComponent }
     ]},

@@ -17,8 +17,8 @@ export class ProjectEnrollmentComponent extends ComponentBase implements OnInit 
 
   ngOnInit() {
     this.enrollForm = this.fb.group({
-      key: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-      nickname: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+      key: ['', Validators.compose([Validators.required])],
+      nickname: ['', Validators.compose([Validators.required])],
       id: ['', Validators.required]
     })
   }

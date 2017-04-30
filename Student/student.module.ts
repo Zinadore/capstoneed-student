@@ -33,6 +33,8 @@ import { ProfileDetailsComponent } from './profile-details-component/profile-det
 import { EditProfileComponent } from './edit-profile-component/edit-profile.component';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { PeerAssessmentSummaryComponent } from './assessment/peer-assessment-summary-component/peer-assessment-summary.component';
+import { ProjectRankingsComponent } from './project/project-rankings-component/project-rankings.component';
+import { ProjectRankingBarComponent } from './project/project-rankings-component/project-ranking-bar.component';
 
 
 @NgModule({
@@ -73,6 +75,8 @@ import { PeerAssessmentSummaryComponent } from './assessment/peer-assessment-sum
     HomeDashboardComponent,
     ProfileDetailsComponent,
     EditProfileComponent,
+    ProjectRankingsComponent,
+    ProjectRankingBarComponent
   ],
   entryComponents: [
     RangeQuestionComponent,

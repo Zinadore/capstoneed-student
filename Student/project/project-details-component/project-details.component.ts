@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChildren } from '@angular/core';
 import { ComponentBase } from '../../../../shared/Directives/componentBase';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -15,7 +15,7 @@ import { IterationHelpers } from '../../../../shared/Helpers/iteration.helpers';
   templateUrl: 'project-details.component.html',
   styleUrls: ['project-details.component.scss'],
 })
-export class ProjectDetailsComponent extends ComponentBase implements OnInit {
+export class ProjectDetailsComponent extends ComponentBase implements OnInit, AfterViewInit {
   private project: Project;
   private assignment: Assignment;
   private project_percentage;
@@ -24,7 +24,9 @@ export class ProjectDetailsComponent extends ComponentBase implements OnInit {
   public isDescriptionClosed: boolean;
   public isTeamClosed: boolean;
 
-  constructor(private route:ActivatedRoute, private store: Store<IAppState>) {
+  @ViewChildren('contrib') contribSpans: ElementRef[];
+
+  constructor(private route:ActivatedRoute, private store: Store<IAppState>, private renderer: Renderer2) {
     super();
 
     let projectSource = route.params.filter(params => params['id'])
@@ -57,6 +59,12 @@ export class ProjectDetailsComponent extends ComponentBase implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    // for(let e of this.contribSpans) {
+    //   this.renderer.addClass(e.nativeElement, 'tada');
+    // }
   }
 
   toggleDescription() {

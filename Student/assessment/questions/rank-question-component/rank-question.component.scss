@@ -1,9 +1,11 @@
 @import "../../../../../style/student-app";
-@mixin rank-position($color){
+@mixin rank-position($color, $fade){
   $actualColor: map-get($categoryBackgrounds, $color);
-  background: linear-gradient(to right, white 10%, $actualColor 100%);
+  background: linear-gradient(to right, $actualColor, white $fade);
   color: contrast-color($actualColor);
+  border-right-color: #e3e3e3;
 }
+
 :host {
   display: flex;
   flex-direction: column;
@@ -14,16 +16,22 @@
     margin: 0 auto;
 
     .list-group-item {
+      padding: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 0.3em;
+      }
+
       &:first-child {
-        border: 2px solid gold;
+        @include rank-position(category-gold, 60%);
       }
 
       &:nth-child(2) {
-        border: 2px solid silver;
+        @include rank-position(category-silver, 45%);
       }
 
       &:nth-child(3) {
-        border: 2px solid saddlebrown;
+        @include rank-position(category-bronze, 30%);
       }
     }
   }
@@ -34,12 +42,12 @@
     justify-items: flex-start;
 
     .student-avatar {
-      max-width: 2.5em;
+      max-width: 3.5em;
       height: auto;
     }
 
     span {
-      margin-left: 0.8rem;
+      margin: 1rem;
     }
   }
 }
