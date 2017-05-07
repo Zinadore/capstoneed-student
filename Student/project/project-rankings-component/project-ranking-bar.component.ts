@@ -1,14 +1,17 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'ced-project-ranking-bar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="rank-progress">
       <div class="rank-progress-bar" #bar [style.background-color]="color" 
            [style.width.%]="percentage"
            [style.animation-duration.ms]="_min + _points * 2"
            [ngStyle]="{'to': percentage}">
+        <ng-content></ng-content>
         <img [src]="logo_url" class="project-logo" [style.background-color]="color">
+        <i class="fa fa-star own-highlight" *ngIf="ownTeam" aria-hidden="true"></i>
       </div>  
     </div>
     
@@ -26,7 +29,8 @@ import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@ang
       height: 100%;
     }
     .rank-progress-bar {
-      width: 0%;
+      width: 0;
+      display: flex;
       position: relative;
       animation-name: widthOut;
       animation-timing-function: linear;
@@ -43,10 +47,25 @@ import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@ang
       height: 5em;
       right: -2em;
       top: calc(50% - 2.5em);
+      box-shadow: 0px 1px 3px 1px black;
     }
-      @keyframes widthOut {
-        from { width: 0 }
-      }
+    
+    .own-highlight {
+      position: absolute;
+      font-size: 2rem;
+      color: gold;
+      top: calc((-2.5em / 4) + 0.25em);
+      right: -1.25em;
+      text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    }
+    
+    @keyframes widthOut {
+      from { width: 0 }
+    }
     `
   ],
 
@@ -74,6 +93,8 @@ export class ProjectRankingBarComponent implements OnInit {
     this._min = value;
   }
 
+  @Input('own-team') ownTeam: boolean;
+
   private percentage: number = 0;
 
   @ViewChild('bar') theBar: ElementRef;
@@ -91,7 +112,8 @@ export class ProjectRankingBarComponent implements OnInit {
   }
 
   private calculatePercentage(): number {
+    if(this._points > this._max) return 100;
+
     return (100 * this._points) / this._max;
   }
-
 }

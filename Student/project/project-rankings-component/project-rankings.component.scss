@@ -1,0 +1,82 @@
+$goal-width: 10px;
+
+:host {
+  display: block;
+
+  .rankings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+    background-color: white;
+    padding: 0.75em 2em;
+
+    span {
+      font-size: 2em;
+      margin-right: -0.5em;
+    }
+  }
+
+  .rankings-display {
+    display: block;
+    padding: 2em;
+    position: relative;
+    background: linear-gradient(to right, white,
+      white calc(100% - 5em),
+      rgba(0, 0, 0, 0) calc(100% - 5em)
+    ),
+    repeating-linear-gradient(
+        -55deg,
+        #e3e3e3,
+        #e3e3e3 30px,
+        #d5d5d5 30px,
+        #d5d5d5 60px
+    );
+
+    z-index: 0;
+
+    .team-display {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0.8em;
+
+      span {
+        font-size: 1.2em;
+        color: white;
+        text-shadow:
+          -1px -1px 0 #000,
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+          1px 1px 0 #000;
+      }
+    }
+
+
+    .goal {
+
+      display: block;
+      width: $goal-width;
+      height: 100%;
+      background-color: #c7c7c7;
+      position: absolute;
+      top: 0;
+      right: 5em;
+      z-index: 1;
+
+      .goal-text {
+        position: absolute;
+        top: - 1em;
+        color: white;
+        white-space: nowrap;
+        font-size: 2rem;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        right: -2.5em;
+      }
+    }
+  }
+
+
+  & /deep/ .rank-progress-bar {
+    z-index: 3;
+  }
+}

@@ -1,8 +1,24 @@
-<ced-project-ranking-bar *ngFor="let ranking of _rankings"
-                         [max]="1000"
-                         [color]="ranking.color"
-                         [logo]="ranking.logo"
-                         [min]="290"
-                         [points]="ranking.total">
+<div class="rankings-header">
+  <h3>Progress towards your next checkpoint:</h3>
+  <span *ngIf="target">{{ target }}</span>
+</div>
 
-</ced-project-ranking-bar>
+
+<div class="rankings-display" *ngIf="_rankings">
+  <ced-project-ranking-bar *ngFor="let ranking of _rankings"
+                           [max]="target"
+                           [color]="ranking.color"
+                           [logo]="ranking.logo"
+                           [min]="min"
+                           [own-team]="ranking.my_team"
+                           [points]="ranking.total">
+    <div class="team-display">
+      <span class="team-name">{{ ranking.team_name }}</span>
+      <span class="team-points">{{ ranking.total }} Points</span>
+    </div>
+
+  </ced-project-ranking-bar>
+  <div class="goal">
+  </div>
+</div>
+

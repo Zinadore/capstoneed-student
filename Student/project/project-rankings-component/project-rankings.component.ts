@@ -7,7 +7,6 @@ import { ActivatedRoute } from '@angular/router';
 import { isNullOrUndefined } from 'util';
 import { ProjectService } from '../../../../shared/Services/project.service';
 import { ProjectRanking } from '../../../../shared/Store/Models/project-ranking';
-import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'ced-project-rankings',
@@ -17,15 +16,26 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
 export class ProjectRankingsComponent extends ComponentBase implements OnInit {
 
   public project: Project;
-  private _rankings: ProjectRanking[];
-  public state: string;
 
+  public min: number;
+  public target: number;
+
+  private _sortedRankings: ProjectRanking[];
+  private _rankings: ProjectRanking[];
   public set rankings(value: ProjectRanking[]) {
     if(!value || !value.length) {
       return;
     }
-    // this._rankings = value.sort((a: ProjectRanking, b: ProjectRanking) => b.total - a.total);
     this._rankings = value;
+    let shorted = value.slice(0).sort((a: ProjectRanking, b: ProjectRanking) => b.total - a.total);
+
+    let maxPoints = shorted[0].total;
+    let minPoints = shorted[shorted.length - 1].total;
+    let ownPoints = shorted.find((r: ProjectRanking) => r.my_team).total;
+
+    this.target = this.calculateTarget(maxPoints, ownPoints, minPoints);
+    this._sortedRankings = shorted;
+    this.min = minPoints;
   };
 
   public get rankings() {
@@ -55,6 +65,22 @@ export class ProjectRankingsComponent extends ComponentBase implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  private calculateTarget(maxPoints: number, ownPoints: number, minPoints: number): number {
+    let multiplier = (ownPoints < 1000)? 100: 1000;
+
+    // if(maxPoints == ownPoints) {
+    //   return Math.ceil(maxPoints * 1.5 / multiplier) * multiplier;
+    // }
+    //
+    // let diff = maxPoints - ownPoints;
+    // let result = ownPoints + diff /2;
+    //
+    // let re = Math.ceil(result / multiplier) * multiplier;
+    // return re;
+
+    return Math.ceil(ownPoints / multiplier) * multiplier;
   }
 
 }

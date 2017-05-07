@@ -10,6 +10,7 @@ import { isNullOrUndefined } from 'util';
 import { PeerAssessmentService } from '../../../../shared/Services/peer-assessment.service';
 import { PeerAssessment } from '../../../../shared/Store/Models/peer-assessment';
 
+
 @Component({
   selector: 'ced-peer-assessment',
   templateUrl: 'peer-assessment.component.html',
@@ -93,7 +94,7 @@ export class PeerAssessmentComponent extends ComponentBase implements OnInit {
   };
 
   public summaryStep_CanGoNext = (): Observable<boolean> => {
-    return Observable.of(true);
+    return Observable.of(true).take(1);
   };
 
 }
