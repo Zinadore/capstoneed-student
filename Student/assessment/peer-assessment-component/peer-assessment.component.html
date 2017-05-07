@@ -1,35 +1,28 @@
-<ng-container *rxContext="let pa on assessment">
-  <ced-form-wizard [onFinish]="wizard_OnFinish">
-    <ced-form-wizard-step *ngFor="let question of pa.questions; let i = index">
-      <ced-pa-question [question]="question" [index]="i" [project]="project | async" (answersOutput)="onReceivedAnswer($event)"></ced-pa-question>
-    </ced-form-wizard-step>
-    <!--<ced-form-wizard-step-->
-      <!--[title]="'Summary'"-->
-      <!--*rxContext="let p on project"-->
-      <!--[canGoNext]="summaryStep_CanGoNext()"-->
-    <!--&gt;-->
-      <!--<div *ngIf="p; else noProjectBlock" class="summary">-->
-        <!--<div class="jumbotron jumbotron-fluid">-->
-          <!--<div class="container">-->
-            <!--<P class="lead">Below is a summary of your answers. Once you have reviewed them you can hit finish to submit them.</P>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<ced-peer-assessment-summary-->
-          <!--[project]="p"-->
-          <!--[peer-assessment-form]="pa"-->
-          <!--[peer-assessments]="peerAssessments"-->
-        <!--&gt;-->
+<ced-form-wizard [onFinish]="wizard_OnFinish" *ngIf="assessment">
+  <ced-form-wizard-step *ngFor="let question of assessment.questions; let i = index">
+    <ced-pa-question [question]="question" [index]="i" [project]="project" (answersOutput)="onReceivedAnswer($event)"></ced-pa-question>
+  </ced-form-wizard-step>
+  <ced-form-wizard-step
+    [title]="'Summary'"
+    [canGoNext]="summaryStep_CanGoNext()"
+  >
+    <div *ngIf="project; else noProjectBlock" class="summary">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <P class="lead">Below is a summary of your answers. Once you have reviewed them you can hit finish to submit them.</P>
+        </div>
+      </div>
+      <ced-peer-assessment-summary
+        [project]="project"
+        [peer-assessment-form]="assessment"
+        [peer-assessments]="peerAssessments"
+      >
 
-        <!--</ced-peer-assessment-summary>-->
-      <!--</div>-->
-    <!--</ced-form-wizard-step>-->
-  </ced-form-wizard>
-</ng-container>
+      </ced-peer-assessment-summary>
+    </div>
+  </ced-form-wizard-step>
+</ced-form-wizard>
 
 <ng-template #noProjectBlock>
-  <div>
-    Loading project...
-  </div>
+  <p>Loading data...</p>
 </ng-template>
-
-

@@ -1,7 +1,7 @@
 <ngb-tabset>
   <ngb-tab *ngFor="let student of PeerAssessmentSummaryComponent_Project.students">
-    <template ngbTabTitle>{{ student.nickname }}</template>
-    <template ngbTabContent>
+    <ng-template ngbTabTitle><span>{{ student.nickname }}</span></ng-template>
+    <ng-template ngbTabContent>
       <div class="list-group">
         <div class="list-group-item summary-item" *ngFor="let q of getNonTextQuestions()">
           <span class="question-text">{{ q.text }}</span>
@@ -10,7 +10,7 @@
 
         </div>
       </div>
-    </template>
+    </ng-template>
 
   </ngb-tab>
 </ngb-tabset>

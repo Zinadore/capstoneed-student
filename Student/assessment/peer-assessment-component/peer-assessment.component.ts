@@ -17,8 +17,8 @@ import { PeerAssessment } from '../../../../shared/Store/Models/peer-assessment'
   styleUrls: ['peer-assessment.component.scss']
 })
 export class PeerAssessmentComponent extends ComponentBase implements OnInit {
-  private assessment: Observable<PeerAssessmentForm>;
-  private project: Observable<Project>;
+  private assessment: PeerAssessmentForm;
+  private project: Project;
   private form_id: number;
   private peerAssessments: PeerAssessment[];
 
@@ -29,23 +29,29 @@ export class PeerAssessmentComponent extends ComponentBase implements OnInit {
       .filter(params => params['id'])
       .map(params => params['id']);
 
-    this.assessment = idObservable
+    let assessment$ = idObservable
       .switchMap(id => this.store.select((state: IAppState)=> state.pa_forms)
         .map(forms => forms.find(f => f.id == id))
       )
       .filter((form: PeerAssessmentForm) => !isNullOrUndefined(form))
       .do(form => this.form_id = form.id);
 
+    this.disposeOnDestroy(assessment$
+      .subscribe(value => this.assessment = value)
+    );
+
     this.disposeOnDestroy(idObservable.distinctUntilChanged().subscribe(id => {
       this.paService.getForm(id)
     }));
 
-    this.project = this.assessment
+    this.disposeOnDestroy(assessment$
       .filter(a => !isNullOrUndefined(a))
       .map(a => a.project_id)
       .switchMap(id => this.store.select((state: IAppState)=> state.projects)
         .map(projects => projects.find(p => p.id == id))
-      );
+      )
+      .subscribe(value => this.project = value)
+    );
 
     this.peerAssessments = [];
   }
@@ -94,7 +100,8 @@ export class PeerAssessmentComponent extends ComponentBase implements OnInit {
   };
 
   public summaryStep_CanGoNext = (): Observable<boolean> => {
-    return Observable.of(true).take(1);
+    return Observable.of(true);
   };
+
 
 }

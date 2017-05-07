@@ -27,13 +27,13 @@ export class RangeQuestionComponent extends ComponentBase implements OnInit {
   private isHelpCollapsed: boolean;
 
   public categories: any[][];
-  public answersEventEmiter: EventEmitter<number>;
+  public answersEventEmitter: EventEmitter<number>;
 
   constructor(private dragulaService: DragulaService) {
     super();
 
     this.isHelpCollapsed = true;
-    this.answersEventEmiter = new EventEmitter<number>();
+    this.answersEventEmitter = new EventEmitter<number>();
 
     this.categories = [];
     for(let i = 0; i < 5; i++) {
@@ -41,7 +41,7 @@ export class RangeQuestionComponent extends ComponentBase implements OnInit {
     }
 
     this.disposeOnDestroy(this.dragulaService.drop.subscribe(value => {
-      this.answersEventEmiter.emit(this.students.length);
+      this.answersEventEmitter.emit(this.students.length);
     }));
   }
 

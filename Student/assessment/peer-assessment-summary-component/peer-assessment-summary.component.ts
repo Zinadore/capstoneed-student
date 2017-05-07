@@ -37,13 +37,13 @@ export class PeerAssessmentSummaryComponent  implements OnInit {
 
   public getQuestionAnswer(question_id: number, student_id:number ): any {
     if(this.PeerAssessmentSummaryComponent_Assessments.length == 0) {
-      return null;
+      return [];
     }
     let pa = this.PeerAssessmentSummaryComponent_Assessments.find(pas => pas.submitted_for_id == student_id);
     let result = pa.answers.find(ans => ans.question_id == question_id);
 
     if(!result) {
-      return null;
+      return [];
     }
 
     return result.answer;

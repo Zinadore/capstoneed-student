@@ -55,7 +55,6 @@ export class PeerAssessmentQuestionComponent extends ComponentBase implements On
 
   ngAfterViewInit() {
     this.step.registerCanGoNext(this.canGoNextSubject.asObservable());
-
   }
 
   ngOnChanges() {
@@ -81,13 +80,18 @@ export class PeerAssessmentQuestionComponent extends ComponentBase implements On
 
         this.questionComponent.instance.students_input = this.project? this.project.students : [];
         this.questionComponent.instance.question_input = this.question;
-        this.disposeOnDestroy(this.questionComponent.instance.answersEventEmiter.subscribe(value => {
-          this.canGoNextSubject.next(value == 0);
+        // this.canGoNextSubject.next(true);
+        //
+        // setTimeout(() => {
+        //   this.canGoNextSubject.next(false);
+        // }, 1500);
+        this.disposeOnDestroy(this.questionComponent.instance.answersEventEmitter.subscribe(value => {
+          let result = value == 0;
+          this.canGoNextSubject.next(result);
         }));
 
         this.step.registerOnNext(this.numberStep_OnNext);
       } break;
-
       case QUESTION_TYPE_TEXT: {
         let factory = this.resolver.resolveComponentFactory(TextQuestionComponent);
         this.questionComponent = this.vcRef.createComponent(factory);
@@ -101,6 +105,8 @@ export class PeerAssessmentQuestionComponent extends ComponentBase implements On
 
         this.step.registerOnNext(this.textStep_OnNext);
       } break;
+
+      // case QUESTION_TYPE_NUMBER:
       case QUESTION_TYPE_RANK: {
         let factory = this.resolver.resolveComponentFactory(RankQuestionComponent);
         this.questionComponent = this.vcRef.createComponent(factory);
@@ -167,4 +173,7 @@ export class PeerAssessmentQuestionComponent extends ComponentBase implements On
     this.answersOutput.emit(result);
   };
 
+  public debug(): void {
+    this.canGoNextSubject.next(true);
+  }
 }
