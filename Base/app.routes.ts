@@ -14,6 +14,8 @@ import { RegisterSuccessComponent } from './register-success-component/register-
 import { ProfileDetailsComponent } from '../Student/profile-details-component/profile-details.component';
 import { EditProfileComponent } from '../Student/edit-profile-component/edit-profile.component';
 import { ProjectRankingsComponent } from '../Student/project/project-rankings-component/project-rankings.component';
+import { ProjectLogsComponent } from '../Student/project/project-logs-component/project-logs.component';
+import { ProjectStatisticsComponent } from '../Student/project/project-statistics-component/project-statistics.component';
 
 export const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -28,7 +30,8 @@ export const APP_ROUTES: Routes = [
       { path: 'enroll', component: ProjectEnrollmentComponent},
       { path: ':id', children:[
         { path: '', pathMatch: 'full', component: ProjectDetailsComponent },
-        { path: 'rankings', pathMatch: 'full', component: ProjectRankingsComponent }
+        { path: 'statistics', pathMatch: 'full', component: ProjectStatisticsComponent },
+        { path: 'logs', pathMatch: 'full', component: ProjectLogsComponent }
       ]},
       { path: '', pathMatch: 'full', component: ProjectListComponent }
     ]},

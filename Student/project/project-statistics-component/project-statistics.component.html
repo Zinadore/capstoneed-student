@@ -1,0 +1,19 @@
+<ng-template [ngTemplateOutlet]="valid" *ngIf="project"></ng-template>
+<ng-template [ngTemplateOutlet]="invalid" *ngIf="!project"></ng-template>
+
+<ng-template #valid>
+  <div class="header">
+    <h4>Statistics for project: {{project.project_name}}</h4>
+    <button class="btn btn-sm" (click)="location.back()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Go back</button>
+  </div>
+
+  <div class="chart-row" >
+    <ced-hours-worked-project [projectId]="project.id"></ced-hours-worked-project>
+  </div>
+</ng-template>
+
+<ng-template #invalid>
+  <div>
+    Loading data...
+  </div>
+</ng-template>

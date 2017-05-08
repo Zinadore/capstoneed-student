@@ -78,7 +78,17 @@
     }
   }
 
-  #the-game {
+  #game {
+    .card-block {
+      padding: 0!important;
+
+      & /deep/ .rankings-display {
+        padding-left: 0!important;
+      }
+    }
+  }
+
+  #quick-actions {
     display: flex;
     justify-content: space-around;
     margin-top: 1.5em;
@@ -95,6 +105,10 @@
       cursor: pointer;
       cursor: hand;
       padding-left: 0.5em;
+
+      &:focus {
+        outline: none;
+      }
 
       @include media-breakpoint-down(md) {
         margin-right: 0;

@@ -35,6 +35,10 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { PeerAssessmentSummaryComponent } from './assessment/peer-assessment-summary-component/peer-assessment-summary.component';
 import { ProjectRankingsComponent } from './project/project-rankings-component/project-rankings.component';
 import { ProjectRankingBarComponent } from './project/project-rankings-component/project-ranking-bar.component';
+import { ProjectLogsComponent } from './project/project-logs-component/project-logs.component';
+import { HoursWorkedProjectComponent } from './stats/hours-worked-project-component/hours-worked-project.component';
+import { ProjectStatisticsComponent } from './project/project-statistics-component/project-statistics.component';
+import { ChartModule } from 'angular2-highcharts';
 
 
 @NgModule({
@@ -47,7 +51,10 @@ import { ProjectRankingBarComponent } from './project/project-rankings-component
     NgxDatatableModule,
     DragulaModule,
     NgxMyDatePickerModule,
-    NgxErrorsModule
+    NgxErrorsModule,
+    ChartModule.forRoot(require('highcharts'),
+      require('highcharts/modules/exporting'),
+      require('highcharts/modules/heatmap'))
   ],
   declarations: [
     SidenavComponent,
@@ -76,7 +83,10 @@ import { ProjectRankingBarComponent } from './project/project-rankings-component
     ProfileDetailsComponent,
     EditProfileComponent,
     ProjectRankingsComponent,
-    ProjectRankingBarComponent
+    ProjectRankingBarComponent,
+    ProjectLogsComponent,
+    ProjectStatisticsComponent,
+    HoursWorkedProjectComponent
   ],
   entryComponents: [
     RangeQuestionComponent,

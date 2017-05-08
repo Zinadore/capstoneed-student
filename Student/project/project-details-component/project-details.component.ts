@@ -18,7 +18,7 @@ import { IterationHelpers } from '../../../../shared/Helpers/iteration.helpers';
 export class ProjectDetailsComponent extends ComponentBase implements OnInit, AfterViewInit {
   private project: Project;
   private assignment: Assignment;
-  private project_percentage;
+  private project_percentage: number = 0;
   private now: number = Date.now();
 
   public isDescriptionClosed: boolean;

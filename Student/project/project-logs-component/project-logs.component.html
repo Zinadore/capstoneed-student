@@ -1,0 +1,31 @@
+<ng-template [ngTemplateOutlet]="valid" *ngIf="project"></ng-template>
+<ng-template [ngTemplateOutlet]="invalid" *ngIf=""></ng-template>
+
+
+<ng-template #valid>
+
+  <div class="header">
+    <h4>Logs for: {{project.project_name}}</h4>
+  </div>
+
+  <div class="list-and-display" *ngIf="logs">
+    <ced-logs-display
+      [logs]="logs"
+      (logSelected)="onLogSelected($event)">
+    </ced-logs-display>
+    <ced-log-preview
+      [log]="selectedLog"
+    ></ced-log-preview>
+  </div>
+
+  <ced-create-log *ngIf="project"
+                  [id]="project.id"
+                  [open]="false">
+  </ced-create-log>
+</ng-template>
+
+<ng-template #invalid>
+  <p>
+    Loading data...
+  </p>
+</ng-template>

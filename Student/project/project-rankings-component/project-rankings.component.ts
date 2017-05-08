@@ -55,12 +55,10 @@ export class ProjectRankingsComponent extends ComponentBase implements OnInit {
     this.disposeOnDestroy(project$.subscribe(project => this.project = project));
 
     this.disposeOnDestroy(project$.filter(project => !isNullOrUndefined(project))
-      .subscribe(project => projectService.getProjectRankings(project.assignment_id))
-    );
-
-    this.disposeOnDestroy(store.select((state: IAppState) => state.project_rankings)
+      .switchMap(project => projectService.getProjectRankings$(project.assignment_id))
       .subscribe(rankings => this.rankings = rankings)
     );
+
   }
 
   ngOnInit() {

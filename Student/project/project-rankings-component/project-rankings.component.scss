@@ -43,11 +43,12 @@ $goal-width: 10px;
       span {
         font-size: 1.2em;
         color: white;
-        text-shadow:
-          -1px -1px 0 #000,
-          1px -1px 0 #000,
-          -1px 1px 0 #000,
-          1px 1px 0 #000;
+        text-shadow: -2px 1px 8px black;
+        //text-shadow:
+        //  -1px -1px 0 #000,
+        //  1px -1px 0 #000,
+        //  -1px 1px 0 #000,
+        //  1px 1px 0 #000;
       }
     }
 
