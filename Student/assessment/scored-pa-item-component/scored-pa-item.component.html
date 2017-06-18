@@ -1,0 +1,26 @@
+<div class="feed-item">
+  <div class="project-logo">
+    <img class="img-fluid" [src]="_project?.logo" alt="{{_project?.project_name + 'logo'}}">
+  </div>
+
+  <div class="project-info">
+    {{ _project?.project_name}}
+  </div>
+
+  <div class="team-badge">
+  <span class="badge badge-default" [style.background]="_project?.color">
+    {{ _project?.team_name }}
+  </span>
+  </div>
+
+  <div class="time-remaining">
+    {{ _iteration.name }}
+  </div>
+
+  <div class="score">
+    <span class="badge badge-pill badge-info">My score: {{ _iteration.pa_score }}</span>
+  </div>
+</div>
+
+
+

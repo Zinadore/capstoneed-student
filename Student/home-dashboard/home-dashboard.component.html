@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <div class="quick-access-item green shadow-layer-3 shadow-hoverable">
+  <div class="quick-access-item green shadow-layer-3 shadow-hoverable" [routerLink]="['/project-evaluations']">
     <div class="quick-access-content">
       <h4 class="title">Project Evaluations</h4>
       <h6 class="subtitle"><span class="badge badge-pill" [ngClass]="{ 'badge-danger': evaluationNumber != 0, 'badge-default': evaluationNumber == 0 }">{{ evaluationNumber }} pending</span></h6>

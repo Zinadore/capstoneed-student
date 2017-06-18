@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, Renderer
     <div class="rank-progress">
       <div class="rank-progress-bar" #bar [style.background-color]="color" 
            [style.width.%]="percentage"
-           [style.animation-duration.ms]="_min + _points * 2"
+           [style.animation-duration.ms]="5 + _min + _points * 2"
            [ngStyle]="{'to': percentage}">
         <ng-content></ng-content>
         <img [src]="logo_url" class="project-logo" [style.background-color]="color">

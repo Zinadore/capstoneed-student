@@ -68,17 +68,16 @@ export class ProjectRankingsComponent extends ComponentBase implements OnInit {
   private calculateTarget(maxPoints: number, ownPoints: number, minPoints: number): number {
     let multiplier = (ownPoints < 1000)? 100: 1000;
 
-    // if(maxPoints == ownPoints) {
-    //   return Math.ceil(maxPoints * 1.5 / multiplier) * multiplier;
-    // }
-    //
-    // let diff = maxPoints - ownPoints;
-    // let result = ownPoints + diff /2;
-    //
-    // let re = Math.ceil(result / multiplier) * multiplier;
-    // return re;
-
     return Math.ceil(ownPoints / multiplier) * multiplier;
   }
 
+  // if(maxPoints == ownPoints) {
+  //   return Math.ceil(maxPoints * 1.5 / multiplier) * multiplier;
+  // }
+  //
+  // let diff = maxPoints - ownPoints;
+  // let result = ownPoints + diff /2;
+  //
+  // let re = Math.ceil(result / multiplier) * multiplier;
+  // return re;
 }

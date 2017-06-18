@@ -6,7 +6,8 @@ import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'ced-text-question',
-  templateUrl: 'text-question.component.html'
+  templateUrl: 'text-question.component.html',
+  styleUrls: ['text-question.component.scss']
 })
 export class TextQuestionComponent extends ComponentBase implements OnInit {
 

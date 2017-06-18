@@ -22,6 +22,12 @@ export class HomeDashboardComponent extends ComponentBase implements OnInit {
       .map(forms => forms.length)
       .subscribe(length => this.assessmentNumber = length)
     );
+
+    this.disposeOnDestroy(store.select((state: IAppState) => state.project_evaluations)
+      .filter(evals => !isNullOrUndefined(evals))
+      .map(evals => evals.length)
+      .subscribe(length => this.evaluationNumber = length)
+    );
   }
 
   ngOnInit() {

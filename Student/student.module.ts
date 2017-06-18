@@ -39,6 +39,10 @@ import { ProjectLogsComponent } from './project/project-logs-component/project-l
 import { HoursWorkedProjectComponent } from './stats/hours-worked-project-component/hours-worked-project.component';
 import { ProjectStatisticsComponent } from './project/project-statistics-component/project-statistics.component';
 import { ChartModule } from 'angular2-highcharts';
+import { ProjectEvaluationListComponent } from './project-evaluation/project-evaluation-list-component/project-evaluation-list.component';
+import { ProjectEvaluationComponent } from './project-evaluation/project-evaluation-component/project-evaluation.component';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { ScoredPaItemComponent } from './assessment/scored-pa-item-component/scored-pa-item.component';
 
 
 @NgModule({
@@ -54,7 +58,8 @@ import { ChartModule } from 'angular2-highcharts';
     NgxErrorsModule,
     ChartModule.forRoot(require('highcharts'),
       require('highcharts/modules/exporting'),
-      require('highcharts/modules/heatmap'))
+      require('highcharts/modules/heatmap')),
+    RoundProgressModule
   ],
   declarations: [
     SidenavComponent,
@@ -86,7 +91,10 @@ import { ChartModule } from 'angular2-highcharts';
     ProjectRankingBarComponent,
     ProjectLogsComponent,
     ProjectStatisticsComponent,
-    HoursWorkedProjectComponent
+    HoursWorkedProjectComponent,
+    ProjectEvaluationListComponent,
+    ProjectEvaluationComponent,
+    ScoredPaItemComponent
   ],
   entryComponents: [
     RangeQuestionComponent,

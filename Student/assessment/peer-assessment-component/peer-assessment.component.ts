@@ -103,5 +103,5 @@ export class PeerAssessmentComponent extends ComponentBase implements OnInit {
     return Observable.of(true);
   };
 
-
 }
+

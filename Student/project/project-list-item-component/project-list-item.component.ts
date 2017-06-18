@@ -19,7 +19,6 @@ import { IterationHelpers } from '../../../../shared/Helpers/iteration.helpers';
 export class ProjectListItemComponent extends ComponentBase implements OnChanges {
   private _project: Project;
   @Input() set project(value) {
-    console.log(value);
     this._project = value;
   }
 
@@ -29,7 +28,6 @@ export class ProjectListItemComponent extends ComponentBase implements OnChanges
 
   private _assignment: Assignment;
   @Input() set assignment(value) {
-    console.log(value);
     this._assignment = value;
   }
 

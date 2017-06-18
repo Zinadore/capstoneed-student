@@ -15,7 +15,6 @@
   </div>
   <div id="assessment-categories">
     <div class="category-wrapper" *ngFor="let index of [0, 1, 2, 3, 4]" >
-      <div class="smiley">{{ 'smiley' + index }}</div>
       <div [dragula]="'students'" [dragulaModel]="categories[index]" id="{{ 'category' + (index + 1) }}">
         <div  *ngFor="let student of categories[index]" class="student-draggable">
           <img [src]="student.avatar_url" class="student-image">

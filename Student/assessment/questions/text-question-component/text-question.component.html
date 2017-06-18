@@ -1,8 +1,16 @@
-<p>{{question_input.text}}</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h4>{{question_input.text}}</h4>
+    <hr class="my-4">
+  </div>
+</div>
 <form [formGroup]="answerForm">
   <div formArrayName="texts">
     <div [formGroupName]="i" class="form-group" *ngFor="let student of students; let i = index">
-      <label for="{{'answer' + student.id }}">{{ student.nickname }}</label>
+      <label for="{{'answer' + student.id }}">
+        <img [src]="student.avatar_url" class="student-image">
+        {{ student.nickname }}
+      </label>
       <textarea rows="6" type="text" class="form-control" id="{{'answer' + student.id }}" formControlName="answerText">
       </textarea>
     </div>

@@ -1,6 +1,6 @@
 <div class="feed-item">
   <div class="project-logo">
-    <img class="img-fluid" src="img/angular.png" alt="{{_form_project?.project_name + 'logo'}}">
+    <img class="img-fluid" [src]="_form_project?.logo" alt="{{_form_project?.project_name + 'logo'}}">
   </div>
 
   <div class="project-info">
@@ -18,7 +18,7 @@
   </div>
 
   <div class="view-button">
-    <button class="btn btn-primary" [routerLink]="['/peer-assessments', _pa_form.id]">View</button>
+    <button class="btn btn-primary" [routerLink]="['/peer-assessments', _pa_form.id]">Take Peer Assessment</button>
   </div>
 </div>
 

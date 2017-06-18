@@ -1,0 +1,56 @@
+<div class="page-title-row" *ngIf="_project">
+  <div class="col-12 ">
+    <h3 class="page-title">Evaluating {{ _project.project_name }}</h3>
+  </div>
+</div>
+
+
+<div class="completion-answer row-component">
+  <div class="slider">
+    <h4 class="display-5">Project Completion</h4>
+    <p class="lead">In your opinion, how much of the project's work has been completed so far? (0 - 100)</p>
+    <input #slider class="progress-slider" type="range" value="0" min="0" max="100">
+  </div>
+  <div class="graph">
+    <round-progress
+      [current]="projectProgress"
+      [max]="100"
+      [responsive]="true"
+      [radius]="90"
+      [stroke]="30"
+      >
+      40
+    </round-progress>
+    <span class="project-completed-text">{{projectProgress}}%</span>
+  </div>
+</div>
+
+
+<div class="feeling-answer row-component">
+  <h4 class="display-5">How do you feel about the project?</h4>
+  <p class="lead">Tap any of the emojis you think matches this project. You can tap them again to deselect them.</p>
+  <div class="feelings-container">
+    <div class="available">
+      <h6>Available Emojis</h6>
+      <div class="emoji-container">
+        <div [@fadeInOut] (click)="selectEmoji(i, $event)" class="emoji" *ngFor="let emoji of emojis; let i = index">
+          <span class="{{emoji.em_class}}"></span>
+          <span class="emoji-text">{{emoji.label}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="selected">
+      <h6>Selected Emojis</h6>
+      <div class="emoji-container">
+        <div [@fadeInOut] (click)="deselectEmoji(i)" class="emoji" *ngFor="let emoji of selectedEmojis; let i = index">
+          <span class="{{emoji.em_class}}"></span>
+          <span class="emoji-text">{{emoji.label}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-success" [disabled]="projectProgress == 0 || selectedEmojis.length == 0" (click)="submitEvaluation()">Submit evaluation</button>
+</div>
+
+
+

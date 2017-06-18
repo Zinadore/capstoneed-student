@@ -1,9 +1,24 @@
-<h3 class="card-header">Pending Peer Assessments</h3>
-<div *rxContext="let list on assessments" class="card-block">
-  <ng-template [ngTemplateOutlet]="got_assessments" [ngOutletContext]="{assignment_list: list}" *ngIf="list.length > 0"></ng-template>
-  <ng-template [ngTemplateOutlet]="no_assessments" *ngIf="list.length == 0"></ng-template>
-
+<div class="card" id="pending">
+  <h3 class="card-header">Pending Peer Assessments</h3>
+  <div *rxContext="let list on assessments" class="card-block">
+    <ng-template [ngTemplateOutlet]="got_assessments" [ngOutletContext]="{assignment_list: list}" *ngIf="list.length > 0"></ng-template>
+    <ng-template [ngTemplateOutlet]="no_assessments" *ngIf="list.length == 0"></ng-template>
+  </div>
 </div>
+
+<div class="card" id="scored">
+  <h3 class="card-header">Latest Marked Peer Assessments</h3>
+  <div class="card-block" *ngIf="scoredIterations">
+    <div class="list-group list-group-flush">
+      <ced-scored-pa-item class="list-group-item"
+                          *ngFor="let it of scoredIterations"
+                          [project]="it.project"
+                          [iteration]="it">
+      </ced-scored-pa-item>
+    </div>
+  </div>
+</div>
+
 
 <ng-template #got_assessments let-list="assignment_list">
   <div class="list-group list-group-flush">

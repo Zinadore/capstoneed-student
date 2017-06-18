@@ -16,6 +16,7 @@ import { EditProfileComponent } from '../Student/edit-profile-component/edit-pro
 import { ProjectRankingsComponent } from '../Student/project/project-rankings-component/project-rankings.component';
 import { ProjectLogsComponent } from '../Student/project/project-logs-component/project-logs.component';
 import { ProjectStatisticsComponent } from '../Student/project/project-statistics-component/project-statistics.component';
+import { ProjectEvaluationListComponent } from '../Student/project-evaluation/project-evaluation-list-component/project-evaluation-list.component';
 
 export const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -37,8 +38,11 @@ export const APP_ROUTES: Routes = [
     ]},
     { path: 'peer-assessments', children: [
       { path: ':id', component: PeerAssessmentComponent },
-      { path: '', pathMatch: 'full', component: PaFeedComponent}
+      { path: '', pathMatch: 'full', component: PaFeedComponent },
     ]},
+    { path:'project-evaluations', children: [
+      { path: '', pathMatch: 'full', component: ProjectEvaluationListComponent }
+    ] },
     { path: 'logs', component: LogsComponent },
     { path: 'profile', children: [
       { path: 'edit', component: EditProfileComponent }

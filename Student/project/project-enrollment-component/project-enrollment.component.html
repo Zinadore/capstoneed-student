@@ -1,10 +1,38 @@
-<form (ngSubmit)="onEnroll()" class="form-inline" [formGroup]="enrollForm">
-  <label for="key" class="form-control-label">Enrollment key:</label>
-  <input id="key" formControlName="key" type="text" class="form-control">
-  <label for="nickname" class="form-control-label">Desired nickname:</label>
-  <input id="nickname" class="form-control" type="text" formControlName="nickname">
-  <label for="id" class="form-control-label">Project id:</label>
-  <input id="id" class="form-control" type="text" formControlName="id">
+<div class="card">
+  <h3 class="card-header">Enroll in a project</h3>
+  <div class="card-block">
+    <p class="lead">In order to enroll you need the following things:</p>
 
-  <button [disabled]="!enrollForm.valid" class="btn btn-success">Enroll</button>
-</form>
+    <form (ngSubmit)="onEnroll()" [formGroup]="enrollForm">
+
+      <div class="form-group">
+        <label for="key" class="form-control-label">Enrollment key:</label>
+        <input id="key" formControlName="key" type="text" class="form-control">
+        <small class="form-text text-muted">
+          This is given to you by your lecturer
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="id" class="form-control-label">Project id:</label>
+        <input id="id" class="form-control" type="text" formControlName="id">
+        <small class="form-text text-muted">
+          This is also provided by your lecturer
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="nickname" class="form-control-label">Desired nickname:</label>
+        <input id="nickname" class="form-control" type="text" formControlName="nickname">
+        <small class="form-text text-muted">
+          Your nickname is how your teammates will know you inside this project.
+        </small>
+      </div>
+
+
+      <button [disabled]="!enrollForm.valid" class="btn btn-success">Enroll</button>
+    </form>
+  </div>
+</div>
+
+
