@@ -71,8 +71,8 @@
           <div class="col-md-3" id="points">
             <h5>Points Contribution</h5>
             <dl class="row">
-              <dt class="col-6 animated tada"><span [ngClass]="{ 'text-success': (project.points.personal >= project.points.average), 'text-danger': (project.points.personal <= project.points.average) }">My Contribution</span></dt>
-              <dd class="col-6 animated tada"><span [ngClass]="{ 'text-success': (project.points.personal >= project.points.average), 'text-danger': (project.points.personal <= project.points.average) }">{{ project.points.personal }}</span></dd>
+              <dt class="col-6 animated tada"><span [ngClass]="{ 'text-success': (project.points.personal >= project.points.average), 'text-danger': (project.points.personal < project.points.average) }">My Contribution</span></dt>
+              <dd class="col-6 animated tada"><span [ngClass]="{ 'text-success': (project.points.personal >= project.points.average), 'text-danger': (project.points.personal < project.points.average) }">{{ project.points.personal }}</span></dd>
               <dt class="col-6">Team Total</dt>
               <dd class="col-6">{{ project.points.total }}</dd>
               <dt class="col-6">Team Average</dt>
